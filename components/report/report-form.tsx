@@ -4,8 +4,6 @@ import React, { useEffect, useState } from "react";
 import { ArrowDownRight, Loader2 } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Select } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
@@ -132,14 +130,21 @@ export function ReportForm() {
 
   // Check for persistent submission within 14 days
   useEffect(() => {
-    const existing = getReportSubmission();
-    if (existing) {
-      setSubmittedRef(existing.referenceNumber);
-      if (existing.phone) {
-        setSubmittedPhone(existing.phone);
+    let ignore = false;
+    queueMicrotask(() => {
+      if (ignore) return;
+      const existing = getReportSubmission();
+      if (existing) {
+        setSubmittedRef(existing.referenceNumber);
+        if (existing.phone) {
+          setSubmittedPhone(existing.phone);
+        }
+        setView("success");
       }
-      setView("success");
-    }
+    });
+    return () => {
+      ignore = true;
+    };
   }, []);
 
   const validateField = (field: keyof FormState, val: string): string | undefined => {

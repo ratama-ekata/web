@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { isValidEmail, isValidSriLankanNIC, sanitizeString } from "@/lib/validators";
+import { isValidEmail, isValidSriLankanNIC } from "@/lib/validators";
 
 export const OFFICIAL_DRUG_ACTIVITIES: Record<string, string> = {
   "selling": "Selling or dealing drugs",
@@ -75,7 +75,6 @@ export async function POST(request: Request) {
       phone,
       nic,
       email,
-      address,
       policeStation,
       police_station,
       activityType,
