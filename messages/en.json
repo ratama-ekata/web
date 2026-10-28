@@ -1,0 +1,810 @@
+{
+  "common": {
+    "appName": "Rata Ma Ekata",
+    "officialPortal": "Official National Digital Citizen Platform",
+    "domain": "ratamaekata.gov.lk",
+    "tagline": "One Nation, One Digital Gateway",
+    "search": "Search services, departments, forms...",
+    "loading": "Loading...",
+    "save": "Save Changes",
+    "cancel": "Cancel",
+    "submit": "Submit",
+    "back": "Back",
+    "close": "Close",
+    "tryAgain": "Try Again"
+  },
+  "header": {
+    "hotlineReport": "Hotline: 1818 (Report Drug Activity)",
+    "hotlineRehab": "Hotline: 1927 (Rehabilitation Support)",
+    "hotline1818Label": "1818 - 24/7 - TOLL FREE",
+    "hotline1818Sub": "Report Drug Activity",
+    "hotline1927Label": "1927 - CONFIDENTIAL",
+    "hotline1927Sub": "Rehabilitation Support",
+    "brandTitle": "රටක් එකට",
+    "brandSubtitle": "A Nation United",
+    "brandOperation": "National Operation",
+    "navHome": "Home",
+    "navAbout": "About",
+    "navRehabilitation": "Rehabilitation",
+    "navOurResponse": "Our Response",
+    "navNews": "News & Updates",
+    "navContact": "Contact",
+    "navResources": "Resources",
+    "reportNow": "Report Now",
+    "hotlinesTitle": "National Hotlines",
+    "themeToggle": "Toggle theme",
+    "menu": "Open menu",
+    "closeMenu": "Close menu"
+  },
+  "navigation": {
+    "home": "Home",
+    "services": "Citizen Services",
+    "about": "About Initiative",
+    "contact": "Help & Contact",
+    "dashboard": "Dashboard",
+    "signIn": "Sign In",
+    "register": "Register",
+    "portal": "Citizen Portal"
+  },
+  "home": {
+    "heroTag": "Unified Digital Sri Lanka",
+    "heroTitle": "One Nation, One Digital Gateway for Every Citizen",
+    "heroSubtitle": "Access transparent, efficient, and modern public services across government institutions from a single secure portal.",
+    "exploreDashboard": "Explore Citizen Dashboard",
+    "signInPortal": "Sign In to Portal",
+    "checkHealth": "System Status"
+  },
+  "auth": {
+    "signInTitle": "Citizen Sign In",
+    "signInSubtitle": "Enter your credentials to access your citizen account",
+    "registerTitle": "Create Citizen Account",
+    "registerSubtitle": "Register for centralized access to all government digital services",
+    "email": "Email Address",
+    "password": "Password",
+    "forgotPassword": "Forgot password?",
+    "noAccount": "Don't have an account?",
+    "alreadyRegistered": "Already registered?"
+  },
+  "dashboard": {
+    "overviewTitle": "Citizen Overview",
+    "overviewSubtitle": "Monitor ongoing service applications, institutional requests, and official communications.",
+    "newRequest": "New Service Request",
+    "activeRequests": "Active Requests",
+    "approvedServices": "Approved Services",
+    "recentApplications": "Recent Applications"
+  },
+  "locales": {
+    "en": "English",
+    "si": "සිංහල",
+    "ta": "தமிழ்"
+  },
+  "report": {
+    "eyebrow": "Report Drug Activity",
+    "title": "Tell us what you know.",
+    "description": "Share information about suspected drug activity in your community. Your name and phone number help authorised officers verify the report and follow up when necessary.",
+    "metaTitle": "Report Drug Activity",
+    "call": {
+      "prompt": "Prefer to speak to someone",
+      "cta": "Call 1818",
+      "note": "You do not need to confront anyone or put yourself at risk to submit a report."
+    },
+    "optional": "Optional",
+    "s1": {
+      "title": "Your details.",
+      "description": "Enter your details, so authorized officers can verify your report and contact you if further information is needed.",
+      "fullName": "Full name",
+      "fullNamePh": "Enter your full name",
+      "phone": "Phone number",
+      "nic": "National ID number",
+      "nicPh": "eg: 199012345678",
+      "email": "Email address",
+      "emailPh": "example@example.com",
+      "address": "Residential address",
+      "addressPh": "Enter your home address",
+      "whyTitle": "Why do we ask for your details?",
+      "whyText": "Your name and phone number help authorised officers verify the information and contact you for clarification. Other personal details are optional.",
+      "countryCode": "Country code",
+      "policeStation": "Nearest Police Station",
+      "policeStationPh": "Search and select police station..."
+    },
+    "s2": {
+      "title": "What did you see or hear?",
+      "description": "Share what you know in your own words. You do not need to investigate or gather additional evidence.",
+      "activityType": "Type of activity",
+      "activityPh": "Select activity type",
+      "describe": "Describe the suspected activity",
+      "describeHint": "Include relevant details about what you observed, when it happened, and anything else that may help officers understand the situation.",
+      "describePh": "Type your description here.."
+    },
+    "types": {
+      "selling": "Selling or dealing drugs",
+      "using-public": "Using drugs in public",
+      "storing": "Storing or transporting drugs",
+      "near-school": "Drug activity near a school",
+      "manufacturing": "Manufacturing or cultivation",
+      "other": "Other"
+    },
+    "s3": {
+      "title": "Add a photo or file",
+      "description": "Only upload material you already have and can share safely. Do not approach or confront anyone to collect evidence.",
+      "uploadFile": "Upload file",
+      "drop": "Drag and drop your files here or",
+      "hint": "Supported: PNG, JPG, JPEG, PDF, DOCX",
+      "browse": "Choose File",
+      "maxSize": "Maximum size: 10MB",
+      "remove": "Remove"
+    },
+    "errors": {
+      "fullName": "Please enter your full name.",
+      "phoneRequired": "Please enter your phone number.",
+      "phoneInvalid": "Enter a valid Sri Lankan phone number.",
+      "nic": "Enter a valid NIC number.",
+      "email": "Enter a valid email address.",
+      "activityType": "Please select a type of activity.",
+      "description": "Please describe the activity (at least 10 characters).",
+      "submit": "We couldn't submit your report right now. Please try again, or call 1818 (24/7 toll-free).",
+      "fileSize": "File is larger than 10MB.",
+      "fileCount": "You can attach up to 3 files.",
+      "policeStation": "Please select a police station."
+    },
+    "submit": "Submit report",
+    "requiredNote": "Fields marked are required.",
+    "readyToSubmit": {
+      "title": "Ready to submit?",
+      "description": "Please review your information before submitting. Once submitted, your report will be securely sent to the Sri Lanka Police Narcotics Bureau.",
+      "cancel": "Cancel",
+      "submit": "Submit Report"
+    },
+    "success": {
+      "title": "Thank you. Your report has been received.",
+      "body": "Our officers will review the information and contact you only if more details are needed. For urgent matters, call 1818 (24/7 toll-free)."
+    },
+    "successCard": {
+      "badge": "REPORT RECEIVED",
+      "title": "Thank you. Your report has been submitted.",
+      "description": "Your information has been received by the reporting service and will be handled with strict confidentiality. Only authorized officers of the Sri Lanka Police Narcotics Bureau can access it.",
+      "smsNotice": "We've sent your reference number by SMS to {phone}.",
+      "smsNoticeGeneric": "We've sent your reference number by SMS to your mobile phone.",
+      "refNumber": "Reference Number",
+      "copy": "Copy",
+      "copied": "Copied",
+      "refNotice": "Please keep this number for your records. Authorised officers may use it to reference your report.",
+      "returnHome": "Return to Home",
+      "submitAnother": "Submit Another Report",
+      "rehabSupport": "Need rehabilitation support?",
+      "call1927": "Call 1927"
+    },
+    "errorCard": {
+      "title": "We couldn’t confirm that your report was submitted.",
+      "description": "Your report may not have been received. Check your connection and try again. If you receive an SMS with a reference number, it was received. If the problem continues, call 1818.",
+      "tryAgain": "Try Again",
+      "keepAnswers": "Keep My Answers"
+    },
+    "infoCards": {
+      "confidentialTitle": "Confidential handling",
+      "confidentialDesc": "Only authorized officers can access your report.",
+      "smsTitle": "Updates by SMS",
+      "smsDesc": "We'll text you when your report is reviewed and acted on. Officers may call if they need details.",
+      "safetyTitle": "Your safety first",
+      "safetyDesc": "Do not investigate or revisit the location."
+    },
+    "sidebar": {
+      "confTitle": "Your information is confidential.",
+      "confText": "Your report is accessible only to authorized Narcotics Bureau officers and used solely for verification, follow-up, and action. No third party receives it.",
+      "privacyPolicy": "Read privacy policy",
+      "helpsTitle": "What helps us",
+      "helps": [
+        "What you observed",
+        "When it happened",
+        "Where it happened, if known",
+        "Details about people or vehicles"
+      ],
+      "safeTitle": "Keep yourself safe",
+      "safe": [
+        "Do not confront anyone",
+        "Do not trespass or investigate",
+        "Do not follow anyone or any vehicle",
+        "Do not share sensitive report details publicly."
+      ]
+    }
+  },
+  "marketing": {
+    "hero": {
+      "eyebrow": "A National Initiative For Drug Free Sri Lanka",
+      "titlePart1": "See something",
+      "titlePart2": "suspicious?",
+      "titleHighlight": "Report it.",
+      "description": "Help protect your community by reporting suspected drug activity. Share what you know safely, with or without your personal details.",
+      "call1818": "Call 1818",
+      "tollFree": "(24/7 toll-free)",
+      "reportCta": "Report Drug Activity",
+      "anonTitle": "Report anonymously",
+      "anonBadge": "ZERO LOG",
+      "anonDesc": "No name, phone number, or personal details required.",
+      "namedTitle": "Report with your name",
+      "namedBadge": "PROTECTED",
+      "namedDesc": "Share your details if you wish for verified officers to follow up.",
+      "helpQuestion": "Need help for yourself or someone you love?",
+      "getHelp": "Get Help - Call 1927"
+    },
+    "map": {
+      "ledToAction": "led to action",
+      "reportsOf": "{acted} of {total} reports",
+      "actedOn": "Acted on",
+      "inReview": "In review",
+      "closed": "Closed",
+      "avgResponse": "Avg. verified response",
+      "hours": "{hrs} hours"
+    },
+    "statistics": {
+      "eyebrow": "Official Drug Raids Data • 2025.01.01 to 2025.10.22",
+      "title": "Surge in Arrests & Enforcement",
+      "lead": "The number of individuals taken into custody due to illicit substance use is steadily increasing day by day.",
+      "viewTable": "View Official Table",
+      "viewChart": "View Interactive Chart",
+      "metricSuspectsTitle": "Total Suspects Arrested",
+      "metricRaidsTitle": "Total Raids Conducted",
+      "metricQuantityTitle": "Total Seized Quantity",
+      "liveImpact": "Live Impact",
+      "dateRange": "2025.01.01 - 2025.10.22",
+      "tabSuspects": "Suspects",
+      "tabRaids": "Raids",
+      "tabQuantity": "Quantity",
+      "labelSuspects": "Suspects:",
+      "labelRaids": "Raids:",
+      "labelQuantity": "Quantity:",
+      "yearBadge": "2025",
+      "drugs": {
+        "ice": "ICE",
+        "iceSub": "Crystal Meth",
+        "ganja": "Ganja",
+        "ganjaSub": "Cannabis",
+        "heroin": "Heroin",
+        "heroinSub": "Diacetylmorphine",
+        "pills": "Pills",
+        "pillsSub": "Tablets & Capsules",
+        "hashish": "Hashish",
+        "hashishSub": "Cannabis Resin",
+        "cocaine": "Cocaine",
+        "cocaineSub": "Alkaloid"
+      },
+      "pillsUnit": "tablets/capsules",
+      "card1Number": "190,938",
+      "card1Title": "Total Suspects Arrested",
+      "card1Desc": "Individuals taken into custody nationwide between Jan 01, 2025 and Oct 22, 2025.",
+      "card2Number": "191,320",
+      "card2Title": "Nationwide Raids Conducted",
+      "card2Desc": "Successful intelligence-led interdictions by the Police and Special Task Force.",
+      "card3Number": "3.96M+",
+      "card3Title": "Narcotic Pills & Capsules Seized",
+      "card3Desc": "3,961,790 illicit tablets and 2,542 Kg of Crystal Meth (ICE) intercepted.",
+      "tableTitle": "Official Drug Raid Summary (2025.01.01 - 2025.10.22)",
+      "tableSub": "Verified statistics recorded by Sri Lanka Police & Law Enforcement Agencies",
+      "tableClose": "Close",
+      "thDrug": "Substance",
+      "thQuantity": "Quantity",
+      "thRaids": "Raids Count",
+      "thSuspects": "Suspects Arrested",
+      "thTotal": "Total",
+      "totalQuantityText": "19,073 Kg + 3.96M tablets"
+    },
+    "pillars": {
+      "eyebrow": "NATIONAL STRATEGY",
+      "titleLine1": "Three fronts.",
+      "titleLine2": "One united mission.",
+      "lead": "Ratama Ekata brings together education, coordinated state law enforcement, and medical rehabilitation to dismantle drug dependency across Sri Lanka.",
+      "p1Badge": "PILLAR 01",
+      "p1Title": "Prevention",
+      "p1Subtitle": "Stop the Harm Before It Starts.",
+      "p1Desc": "Comprehensive awareness programs, vocational youth initiatives, and community-level forums safeguarding school children across all 25 administrative districts.",
+      "p1Action": "Join the Movement",
+      "p2Badge": "PILLAR 02",
+      "p2Title": "Law Enforcement",
+      "p2Subtitle": "Disrupt illicit trafficking networks.",
+      "p2Desc": "Targeted inter-agency operations against high-level maritime imports, syndicates, and street supply networks, guided directly by intelligence submitted by citizens.",
+      "p2Action": "Report Drug Activity",
+      "p3Badge": "PILLAR 03",
+      "p3Title": "Rehabilitation",
+      "p3Subtitle": "Restore lives, rebuilt futures.",
+      "p3Desc": "Support, confidential, dignity-first inpatient and outpatient medical therapies, psychological counseling, and vocational reintegration partnerships nationwide.",
+      "p3Action": "Get Help - Call 1927",
+      "learnMore": "Learn More"
+    },
+    "stories": {
+      "eyebrow": "A Future of Hope",
+      "titleLine1": "Recovery Is Possible.",
+      "titleLine2": "A New Beginning Awaits.",
+      "lead": "Real stories of people, families, and communities across Sri Lanka finding a way forward with dignity and courage.",
+      "badge": "Stories",
+      "watchTime": "{time} min watch time",
+      "s1Quote": "“Everyone deserves a second chance in life. And you don't have to face this alone.”",
+      "s1Attr": "— Former rehabilitation participant",
+      "s2Quote": "“I thought there was no way back. Today, I'm rebuilding my life.”",
+      "s2Attr": "— Saman, Former rehabilitation participant",
+      "s3Quote": "“A New Beginning Was Possible. Today, I have a hope for my future.”",
+      "s3Attr": "— Kasun, Former recovery participant",
+      "exploreMore": "Explore More Stories",
+      "date": "20 September 2026",
+      "modalTitle": "National Recovery Community Story",
+      "modalHotline": "Call 1927 Rehabilitation Hotline"
+    },
+    "progress": {
+      "eyebrow": "Progress Across the Nation",
+      "titleLine1": "Change Is Happening.",
+      "titleLine2": "Progress Is Within Reach.",
+      "readTime": "{time} min read",
+      "prevBtn": "Previous updates",
+      "nextBtn": "Next updates",
+      "n1Badge": "News",
+      "n1Title": "A new National Operations Office and Media Centre was opened to strengthen nationwide coordination.",
+      "n1Date": "01 October 2026",
+      "n2Badge": "Events & Campaigns",
+      "n2Title": "A nationwide awareness initiative brought together public institutions, youth leaders, and regional administrators.",
+      "n2Date": "20 September 2026",
+      "n3Badge": "Maritime Security",
+      "n3Title": "Sri Lanka Navy and Coast Guard intensify joint surveillance operations across coastal choke-points.",
+      "n3Date": "15 September 2026",
+      "n4Badge": "Youth Leadership",
+      "n4Title": "National Youth Summit unites student ambassadors to lead peer-to-peer substance abuse prevention.",
+      "n4Date": "10 September 2026",
+      "exploreMore": "Explore More Updates"
+    },
+    "faq": {
+      "eyebrow": "FAQs",
+      "titleLine1": "General questions,",
+      "titleLine2": "clear answers.",
+      "lead": "Quick answers about reporting drug activity, getting help and joining prevention programs.",
+      "seeAll": "See All",
+      "q1": "What can I report, and do I need proof?",
+      "a1": "You can report anything you've seen or heard that you think is drug activity, such as selling, using in public, storing or transporting drugs, or drugs near a school. You don't need proof. Share what you know, including where and when. Please don't confront anyone or put yourself at risk.",
+      "q2": "Do I have to give my name?",
+      "a2": "No. You can report completely anonymously under our ZERO LOG policy. No name, phone number, or personal details are required or tracked unless you explicitly choose to share them for official follow-up.",
+      "q3": "What happens after I submit a report?",
+      "a3": "Your report is securely routed to the National Operations Joint Intelligence Desk. Qualified officers evaluate the intelligence, coordinate inter-agency verification, and mobilize law enforcement or community interventions accordingly.",
+      "q4": "Is it safe to ask for help with drug use?",
+      "a4": "Yes, absolutely. Calling Hotline 1927 is 100% confidential and medical-first. You or your family will receive guidance on certified inpatient and outpatient rehabilitation therapies without fear of legal prosecution.",
+      "q5": "How can I volunteer or organize a prevention program?",
+      "a5": "You can join as a community volunteer or youth ambassador through the Citizen Portal or your local Divisional Secretariat. We provide verified educational materials, workshop guidance, and institutional support for schools and villages nationwide."
+    },
+    "cta": {
+      "statement": "Know about drug activity? Report it. You can stay anonymous, or share your name and contact details so officers can follow up with you. Report online or call 1818 toll-free. Available 24/7 across all telephone networks in Sri Lanka.",
+      "call1818": "Call 1818 (24/7 toll-free)",
+      "reportCta": "Report Drug Activity",
+      "rehabQuestion": "Need rehabilitation support?",
+      "rehabCall": "Call 1927 (Confidential & Free)"
+    }
+  },
+  "footer": {
+    "addressLine1": "Presidential Secretariat,",
+    "addressLine2": "Galle Face, Colombo 00100,",
+    "addressLine3": "Sri Lanka",
+    "officialLinksTitle": "Official Links",
+    "ministryLink": "Ministry of Public Security & Parliment Affairs",
+    "presidentialLink": "Presidential Secretariat",
+    "policeLink": "Sri Lanka Police",
+    "pmdLink": "President's Media Hub",
+    "resourcesTitle": "Resources",
+    "circulars": "Circulars",
+    "cabinetDecisions": "Cabinet Decisions",
+    "reports": "Reports & Publications",
+    "downloads": "Downloads",
+    "faqs": "FAQs",
+    "movementTitle": "The Movement",
+    "about": "About Initiative",
+    "rehabilitation": "Rehabilitation Bureau",
+    "whatWeDo": "What We Do",
+    "howToReport": "How to Report",
+    "joinMovement": "Join the Movement",
+    "recentStories": "Recent Stories",
+    "hotlinesTitle": "National Hotlines",
+    "reportActivity": "Report Drug Activity:",
+    "tollFree": "24/7 - TOLL FREE",
+    "rehabSupport": "Rehabilitation Support",
+    "confidential": "CONFIDENTIAL",
+    "copyright": "© 2026 presidentsoffice. All rights reserved.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms & Conditions",
+    "cookies": "Cookies Settings"
+  },
+  "about": {
+    "our": "Our",
+    "pageTitle": "About Initiative",
+    "pageEyebrow": "National Operation",
+    "metaTitle": "About Initiative | Ratama Ekata National Operation",
+    "metaDescription": "Vision, Mission, and Objectives of the Ratama Ekata National Operation against drug abuse in Sri Lanka.",
+    "header": {
+      "eyebrow": "About the Initiative",
+      "title": "A drug-free, safe Sri Lanka.",
+      "description": "Sri Lanka’s united national initiative bringing together state institutions, security forces, and citizens to eradicate drug trafficking and safeguard future generations."
+    },
+    "vision": {
+      "eyebrow": "Strategic Direction",
+      "title": "Vision",
+      "text": "To protect Sri Lanka’s most valuable resource—its future generations, particularly children and young people—from the dangers of drugs and build a safe, healthy, and drug-free society."
+    },
+    "mission": {
+      "eyebrow": "Our Mandate",
+      "title": "Mission",
+      "text": "To unite government institutions, security forces, and the public to reduce drug supply and demand, disrupt drug trafficking networks, strengthen prevention and public awareness, and support rehabilitation and social reintegration for people seeking to overcome drug dependence."
+    },
+    "objectives": {
+      "eyebrow": "National Strategic Priorities",
+      "title": "Key Objectives",
+      "lead": "The National Operation is driven by four overarching strategic pillars to dismantle illicit trafficking, restore individuals, educate the next generation, and enforce institutional accountability.",
+      "cycleTitle": "The Four-Pillar National Protection Chain",
+      "cycleSubtitle": "An integrated operational framework from interdiction to recovery and integrity",
+      "exploreTab": "Select an Objective to explore details",
+      "keyDirectives": "Core Directives & Action Areas",
+      "operationMandate": "Operational Mandate",
+      "items": [
+        {
+          "number": "01",
+          "tagline": "Supply & Demand Reduction",
+          "title": "Drug Prevention and Law Enforcement",
+          "description": "Systematically disrupting illicit narcotics trafficking networks, intercepting sea and air supply routes, and enforcing zero-tolerance legal actions against organized cartels to eliminate drug availability across Sri Lanka.",
+          "image": "/images/news/news-customs-inspection.jpg",
+          "badge": "Border & Street Interdiction",
+          "status": "Active High-Alert Command",
+          "actions": [
+            {
+              "title": "Dismantling Supply Chains",
+              "desc": "Targeting kingpins, regional distributors, and covert logistics networks through multi-agency intelligence."
+            },
+            {
+              "title": "Maritime & Port Interdiction",
+              "desc": "24/7 Naval coastal patrols and advanced high-energy container scanners at Colombo Port."
+            },
+            {
+              "title": "Zero-Tolerance Law Enforcement",
+              "desc": "Special Task Force and Police Narcotics Bureau joint interdictions under strict statutory powers."
+            }
+          ]
+        },
+        {
+          "number": "02",
+          "tagline": "Holistic Recovery Pathways",
+          "title": "Rehabilitation and Reintegration",
+          "description": "Providing evidence-based clinical detoxification, psychological counseling, and structured vocational training to empower individuals recovering from addiction to rebuild their lives and reintegrate into society with dignity.",
+          "image": "/images/news/news-rehab-center.jpg",
+          "badge": "Clinical Care & Social Empowerment",
+          "status": "Islandwide Facility Expansion",
+          "actions": [
+            {
+              "title": "Evidence-Based Medical Detox",
+              "desc": "Expanding clinical treatment facilities across provincial and district hospitals with specialist care."
+            },
+            {
+              "title": "Vocational Grants & Employment",
+              "desc": "Structured certifications and small-enterprise micro-grants to restore economic independence."
+            },
+            {
+              "title": "Family & Community Reintegration",
+              "desc": "Compassionate psycho-social counseling and peer support networks to prevent relapse."
+            }
+          ]
+        },
+        {
+          "number": "03",
+          "tagline": "Community Resilience & Youth Defense",
+          "title": "Public Awareness and Prevention",
+          "description": "Mobilizing schools, universities, parents, and community leaders through intensive awareness programs and the anonymous 1818 hotline to build an informed society that actively rejects narcotic threats.",
+          "image": "/images/news/news-school-awareness.jpg",
+          "badge": "Citizen Education & Grassroots Defense",
+          "status": "National Grassroots Rollout",
+          "actions": [
+            {
+              "title": "School & Youth Empowerment",
+              "desc": "Life-skills education, anti-drug clubs, and student leadership councils in every educational zone."
+            },
+            {
+              "title": "Hotline 1818 Anonymous Reporting",
+              "desc": "Encrypted, zero-log toll-free intelligence channel for confidential community reporting."
+            },
+            {
+              "title": "Sports & Healthy Living Rallies",
+              "desc": "Islandwide marathon walks, youth sports tournaments, and community engagement campaigns."
+            }
+          ]
+        },
+        {
+          "number": "04",
+          "tagline": "Transparency & Zero Tolerance",
+          "title": "Accountability and Institutional Integrity",
+          "description": "Enforcing strict legal accountability against any public officials or corrupt individuals facilitating narcotics, confiscating illicit criminal proceeds, and preserving total forensic transparency across government institutions.",
+          "image": "/images/news/news-forensic-lab.jpg",
+          "badge": "Forensic Integrity & Anti-Corruption",
+          "status": "Independent Oversight Authority",
+          "actions": [
+            {
+              "title": "Zero Tolerance for Complicity",
+              "desc": "Aggressive prosecution and dismissal of any corrupt state officials aiding drug networks."
+            },
+            {
+              "title": "Asset Confiscation & Reinvestment",
+              "desc": "Tracing and seizing illicit wealth generated from narcotics to reinvest in citizen rehabilitation."
+            },
+            {
+              "title": "Forensic & Whistleblower Shield",
+              "desc": "State-of-the-art laboratory evidence verification and robust statutory safeguards for tipsters."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "news": {
+    "pageTitle": "News & Updates",
+    "metaTitle": "News & Updates | Ratama Ekata National Operation",
+    "metaDescription": "Official press releases, agricultural development progress reports, and regional updates from the Ratama Ekata National Initiative.",
+    "header": {
+      "eyebrow": "News & Updates",
+      "title": "A drug-free, safe Sri Lanka.",
+      "description": "Sri Lanka’s united national initiative bringing together state institutions, security forces, and citizens to eradicate drug trafficking and safeguard future generations."
+    },
+    "readFull": "View Full News",
+    "readMore": "Read more",
+    "items": [
+      {
+        "slug": "national-drug-prevention-framework-presidential-patronage",
+        "title": "National Operation Against Drug Abuse Officially Inaugurated Under Presidential Patronage",
+        "description": "The Government of Sri Lanka has formally inaugurated the 'Ratama Ekata' National Operation Against Drug Abuse, uniting law enforcement agencies, defense services, healthcare authorities, and civil society under a single strategic command. The comprehensive initiative focuses on disrupting organized narcotics trafficking networks, strengthening nationwide educational prevention in schools, and expanding state-funded medical rehabilitation pathways. The President reiterated that safeguarding the youth and building a secure, healthy, and drug-free nation remains the highest priority of the state.",
+        "date": "October 20, 2026",
+        "author": "Chamara Madushanka",
+        "image": "/images/news/news-press-briefing.jpg"
+      },
+      {
+        "slug": "maritime-taskforce-narcotics-interception-patrol",
+        "title": "Multi-Agency Taskforce Deploys Joint Intelligence Units Across Vulnerable Regional Corridors",
+        "description": "In an intensive effort to dismantle illicit regional drug supply chains, a multi-agency taskforce comprising Sri Lanka Police, the Police Narcotics Bureau, and regional administrative intelligence desks has deployed specialized verification teams across key transport hubs and agrarian transit zones. The synchronized operations prioritize real-time tip-off investigations under strict Zero-Log anonymous protections.",
+        "date": "October 20, 2026",
+        "author": "Anuradhapura",
+        "image": "/images/news/news-police-k9.jpg"
+      },
+      {
+        "slug": "community-rehabilitation-wellness-expansion",
+        "title": "Islandwide Community Outreach and Guidance Centers Established to Support Families Affected by Substance Abuse",
+        "description": "Regional welfare directorates and agrarian community committees have launched integrated family support desks across the Southern Province. The centers provide compassionate psychological counseling, certified clinical referrals, and continuous social protection for families striving to overcome the impact of substance dependence.",
+        "date": "October 20, 2026",
+        "author": "Hambantota",
+        "image": "/images/news/news-rehab-center.jpg"
+      },
+      {
+        "slug": "provincial-officers-induction-drug-prevention",
+        "title": "24 Specialized Officers Inducted to Direct Provincial Drug Prevention and Youth Wellness Programs",
+        "description": "Twenty-four newly appointed prevention coordination officers formally received their induction credentials at the Governor's Office Auditorium in Anuradhapura. The officers will lead district-level educational seminars, oversee community rehabilitation linkages, and assist local law enforcement in eliminating local drug access points.",
+        "date": "October 20, 2026",
+        "author": "Chamara Madushanka",
+        "image": "/images/news/news-press-briefing.jpg"
+      },
+      {
+        "slug": "national-operations-media-centre-inaugurated",
+        "title": "Central Operations Command and Citizen Intelligence Desk Go Live in Colombo",
+        "description": "The Presidential Secretariat has inaugurated the new National Operations Centre and Citizen Media Bureau in Colombo, operating 24/7 communications consoles and encrypted intelligence routing protocols. The facility bridges public tip-offs received via Hotline 1818 with regional tactical response teams across the island.",
+        "date": "October 18, 2026",
+        "author": "Colombo",
+        "image": "/images/news/news-hotline-operations.jpg"
+      },
+      {
+        "slug": "community-prevention-initiative-regional-summit",
+        "title": "Regional Administrators and School Principals Convene for National Youth Protection Forum",
+        "description": "Over 500 school principals, divisional secretaries, and youth counselors gathered in the North Western Province to establish coordinated substance abuse monitoring protocols for educational institutions. The symposium introduced early detection guidelines and certified peer-to-peer counseling programs.",
+        "date": "October 16, 2026",
+        "author": "Kurunegala",
+        "image": "/images/news/news-school-awareness.jpg"
+      },
+      {
+        "slug": "navy-coast-guard-maritime-patrols",
+        "title": "Navy and Coast Guard Intensify 24/7 Maritime Interdiction Patrols Along Territorial Waters",
+        "description": "Sri Lanka Navy flotillas and Coast Guard interceptor units have expanded round-the-clock patrol operations across strategic maritime choke-points. Equipped with advanced surface radar and aerial reconnaissance, the squadrons maintain strict surveillance to intercept unauthorized offshore cargo transfers.",
+        "date": "October 14, 2026",
+        "author": "Trincomalee",
+        "image": "/images/news/news-coastal-patrol.jpg"
+      },
+      {
+        "slug": "national-youth-leadership-summit",
+        "title": "1,200 Student Ambassadors Mobilized Across 9 Provinces for Peer-to-Peer Substance Prevention",
+        "description": "The National Youth Leadership Summit convened more than 1,200 student leaders from secondary schools and state universities in Colombo. Delegates launched campus awareness campaigns and signed a collective pledge advocating healthy, active, and drug-free university and school environments.",
+        "date": "October 12, 2026",
+        "author": "Colombo",
+        "image": "/images/news/news-youth-walk.jpg"
+      },
+      {
+        "slug": "rehabilitation-wellness-centre-western-province",
+        "title": "State-of-the-Art Residential Rehabilitation and Psychological Healing Center Opened",
+        "description": "The Ministry of Health and the National Dangerous Drugs Control Board commissioned a modern wellness facility in the Western Province. Offering zero-stigma confidential therapy, medical detoxification, and certified vocational training, the center helps individuals achieve long-term recovery and dignified social reintegration.",
+        "date": "October 10, 2026",
+        "author": "Gampaha",
+        "image": "/images/news/news-rehab-center.jpg"
+      },
+      {
+        "slug": "national-hotline-1818-milestone-reports",
+        "title": "National Hotline 1818 Surpasses 10,000 Verified Citizen Tip-Offs with Zero-Log Confidentiality",
+        "description": "Operational records indicate that the toll-free hotline 1818 has logged and evaluated over 10,000 verified citizen intelligence calls since launch. Operating under a strict Zero-Log privacy guarantee, the hotline has facilitated hundreds of targeted law enforcement interventions without endangering informants.",
+        "date": "October 08, 2026",
+        "author": "National Operations Desk",
+        "image": "/images/news/news-hotline-operations.jpg"
+      },
+      {
+        "slug": "vocational-skills-grants-recovered-citizens",
+        "title": "Accredited Vocational Toolkits and Entrepreneurship Grants Awarded to 150 Recovered Citizens",
+        "description": "One hundred and fifty individuals who completed certified residential rehabilitation courses were awarded recognized technical certificates and starter equipment sets in electrical wiring, carpentry, and commercial organic farming to guarantee sustainable economic independence.",
+        "date": "October 06, 2026",
+        "author": "Kandy",
+        "image": "/images/news/news-rehab-center.jpg"
+      },
+      {
+        "slug": "islandwide-schools-healthy-living-competition",
+        "title": "Islandwide School Competition on Drug-Free Living Celebrates Creative Youth Contributions",
+        "description": "The Ministry of Education concluded the national fine arts, essay writing, and public speaking competition celebrating drug-free youth culture. Thousands of students from all 25 administrative districts submitted original works promoting positive peer influence and substance prevention.",
+        "date": "October 04, 2026",
+        "author": "Colombo",
+        "image": "/images/news/news-school-awareness.jpg"
+      },
+      {
+        "slug": "community-based-surveillance-rural-villages",
+        "title": "Village Vigilance Committees Established Across Rural Secretariats to Eliminate Local Drug Outlets",
+        "description": "Community elders, women's societies, and local agrarian leaders across the Eastern Province have formed village monitoring groups to safeguard rural communities. The committees collaborate with local authorities to eradicate covert narcotics distribution networks near farming settlements.",
+        "date": "October 02, 2026",
+        "author": "Ampara",
+        "image": "/images/news/news-police-k9.jpg"
+      },
+      {
+        "slug": "police-community-liaison-committees-southern-province",
+        "title": "Community Police Liaison Desks Formed in 45 Divisional Secretariats to Strengthen Safety",
+        "description": "Sri Lanka Police has expanded community liaison desks across Galle and Matara to bridge neighborhood resident associations with law enforcement. The initiative enables swift reporting of suspicious activities and fosters trusted cooperation between citizens and police stations.",
+        "date": "September 30, 2026",
+        "author": "Galle",
+        "image": "/images/news/news-police-k9.jpg"
+      },
+      {
+        "slug": "central-province-estate-community-awareness",
+        "title": "Comprehensive Medical Counseling and Substance Awareness Conducted in Plantation Districts",
+        "description": "Mobile wellness teams visited plantation worker communities in the Nuwara Eliya and Badulla districts to conduct free health screenings, family mental wellness counseling, and educational workshops detailing the risks of illicit chemical substances.",
+        "date": "September 28, 2026",
+        "author": "Nuwara Eliya",
+        "image": "/images/news/news-school-awareness.jpg"
+      },
+      {
+        "slug": "northern-province-sports-festival-peace-wellness",
+        "title": "Northern Province Wellness Sports Festival Promotes Drug-Free Lifestyle Among 2,000 Youths",
+        "description": "Over 2,000 young athletes gathered at Duraiappah Stadium in Jaffna for the five-day Northern Province Sports Festival. Held under the banner of health and substance prevention, the event promoted teamwork and active athletic participation as shields against substance abuse.",
+        "date": "September 26, 2026",
+        "author": "Jaffna",
+        "image": "/images/news/news-youth-walk.jpg"
+      },
+      {
+        "slug": "customs-advanced-cargo-scanners-colombo-port",
+        "title": "High-Capacity Container Scanning Stations Activated at Colombo Port to Intercept Illicit Narcotics",
+        "description": "Sri Lanka Customs has commissioned next-generation non-intrusive container radiographic scanners at the Colombo Port container terminal. The high-energy X-ray systems scan import containers in minutes, significantly improving border security against transnational contraband.",
+        "date": "September 24, 2026",
+        "author": "Colombo",
+        "image": "/images/news/news-customs-inspection.jpg"
+      },
+      {
+        "slug": "digital-portal-anonymous-intelligence-milestone",
+        "title": "Over 25,000 Anonymous Inquiries and Tip-Offs Processed Securely Under Strict Data Protection",
+        "description": "The official citizen platform ratamaekata.gov.lk has handled more than 25,000 verified public reports and assistance requests. The portal utilizes end-to-end cryptographic safeguards to protect citizen anonymity while facilitating rapid operational response.",
+        "date": "September 22, 2026",
+        "author": "Presidential Secretariat",
+        "image": "/images/news/news-hotline-operations.jpg"
+      },
+      {
+        "slug": "agricultural-farming-communities-drug-free-pledge",
+        "title": "Farming Communities and Agrarian Societies Unite in National Pledge for Drug-Free Rural Villages",
+        "description": "Agrarian development leaders and grassroots farmer organizations across Polonnaruwa and Monaragala have ratified a joint community accord pledging zero tolerance for illicit narcotics, while promoting healthy living and community vigilance.",
+        "date": "September 20, 2026",
+        "author": "Polonnaruwa",
+        "image": "/images/news/news-youth-walk.jpg"
+      },
+      {
+        "slug": "national-women-leadership-prevention-dialogue",
+        "title": "Women Leaders and Mothers' Societies Form National Network for Family-Centric Substance Prevention",
+        "description": "Representatives from mothers' organizations and child protection officers met in Ratnapura to create grassroots intervention guidelines for families. The network offers early assistance to households dealing with youth substance abuse challenges.",
+        "date": "September 18, 2026",
+        "author": "Ratnapura",
+        "image": "/images/news/news-school-awareness.jpg"
+      },
+      {
+        "slug": "tri-forces-police-stf-joint-readiness-exercise",
+        "title": "Tri-Forces and Police Special Task Force Execute Synchronized Readiness Drill Along Coastal Corridors",
+        "description": "Army, Navy, Air Force, and Police Special Task Force units completed a joint interdiction simulation across coastal lagoon zones. The exercise tested rapid response command communications and tactical interception capabilities against offshore trafficking vessels.",
+        "date": "September 15, 2026",
+        "author": "Puttalam",
+        "image": "/images/news/news-coastal-patrol.jpg"
+      },
+      {
+        "slug": "medical-detoxification-units-expanded-district-hospitals",
+        "title": "Ministry of Health Opens Dedicated Medical Detoxification and Addiction Clinics Across 14 Base Hospitals",
+        "description": "Specialized clinical outpatient facilities staffed by psychiatrists and medical officers were inaugurated in 14 district base hospitals across Uva and Sabaragamuwa provinces, providing free, compassionate, and confidential medical addiction therapies.",
+        "date": "September 12, 2026",
+        "author": "Badulla",
+        "image": "/images/news/news-forensic-lab.jpg"
+      },
+      {
+        "slug": "community-youth-wellness-centers-rural-districts",
+        "title": "18 Regional Youth Wellness and Substance Prevention Counseling Units Established",
+        "description": "Eighteen dedicated youth wellness facilities equipped with recreational resources, vocational mentoring, and qualified counselors opened in rural districts to provide safe spaces and life skills training for young people.",
+        "date": "September 10, 2026",
+        "author": "Matale",
+        "image": "/images/news/news-rehab-center.jpg"
+      },
+      {
+        "slug": "quarterly-progress-review-national-operation",
+        "title": "National Operation Against Drug Abuse Submits Q3 Progress Report Highlighting Major Enforcement Gains",
+        "description": "The Advisory Council of the Ratama Ekata Operation presented its third-quarter report to the Presidential Secretariat, showing an 84% resolution rate for verified citizen tip-offs and a 40% rise in voluntary rehabilitation admissions nationwide.",
+        "date": "September 08, 2026",
+        "author": "Colombo",
+        "image": "/images/news/news-press-briefing.jpg"
+      }
+    ],
+    "pagination": {
+      "previous": "Previous",
+      "next": "Next",
+      "page": "Page",
+      "of": "of",
+      "showing": "Showing {start}–{end} of {total} news updates"
+    },
+    "backToNews": "Back to News & Updates"
+  },
+  "contact": {
+    "pageTitle": "Contact & Help",
+    "metaTitle": "Contact & Support | Ratama Ekata National Operation",
+    "metaDescription": "Get in touch with the Ratama Ekata National Operations Desk. 24/7 toll-free hotlines 1818 and 1927, official office locations, and public inquiry portal.",
+    "header": {
+      "eyebrow": "Contact & Support",
+      "title": "We are here for you 24/7 across Sri Lanka.",
+      "description": "Reach out to official desks, get immediate guidance on reporting drug activities, access confidential rehabilitation assistance, or send us public inquiries."
+    },
+    "form": {
+      "title": "Send an Inquiry or Feedback",
+      "subtitle": "Fill out the form below. Official officers will review and respond promptly.",
+      "nameLabel": "Your Name (Optional)",
+      "namePlaceholder": "Enter your full name or remain anonymous",
+      "contactLabel": "Contact Phone or Email",
+      "contactPlaceholder": "e.g. 077 123 4567 or citizen@email.com",
+      "subjectLabel": "Inquiry Subject",
+      "subjectSelect": "Select a category",
+      "subjects": {
+        "general": "General Public Inquiry",
+        "rehab": "Rehabilitation & Wellness Guidance",
+        "volunteer": "Youth & Community Program Participation",
+        "media": "Media & Press Inquiries",
+        "other": "Other Inquiries"
+      },
+      "messageLabel": "Your Message",
+      "messagePlaceholder": "Write your inquiry, suggestion, or question here...",
+      "submit": "Submit Message",
+      "submitting": "Submitting...",
+      "successTitle": "Message Received",
+      "successText": "Thank you for reaching out. Your inquiry has been forwarded to the relevant operations desk."
+    },
+    "hotlines": {
+      "title": "Emergency & Support Hotlines",
+      "h1Title": "1818 - Report Drug Activity",
+      "h1Sub": "24/7 Toll-Free | Confidential & Zero-Log",
+      "h2Title": "1927 - Rehabilitation Support",
+      "h2Sub": "Confidential Counseling & Medical Guidance",
+      "h3Title": "119 - Police Emergency",
+      "h3Sub": "Immediate Law Enforcement Assistance",
+      "h4Title": "1990 - Suwa Seriya Ambulance",
+      "h4Sub": "Free Pre-Hospital Emergency Medical Care"
+    },
+    "office": {
+      "title": "Official Headquarters",
+      "name": "Presidential Secretariat - National Operations Desk",
+      "address": "Galle Face, Colombo 00100, Sri Lanka",
+      "hoursTitle": "Operating Hours",
+      "hoursOps": "Operations Desk & Hotlines: 24 Hours / 7 Days",
+      "hoursAdmin": "General Administration: Mon - Fri (8:30 AM - 4:30 PM)",
+      "emailTitle": "Official Inquiries Email",
+      "email": "info@ratamaekata.gov.lk",
+      "opsEmail": "operations@ratamaekata.gov.lk"
+    }
+  },
+  "rehabilitation": {
+    "metaTitle": "Bureau of Rehabilitation | Official Operations & Statistics | Ratama Ekata",
+    "metaDescription": "Official progress, statistics, centre capacity, treatment programs, and aftercare data of the Bureau of Rehabilitation under the Ministry of Public Security.",
+    "pageTitle": "Bureau of Rehabilitation",
+    "pageSubtitle": "Statutory National Operations, Physical Progress & Reintegration Data"
+  }
+}

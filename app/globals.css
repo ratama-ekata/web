@@ -1,0 +1,1484 @@
+@import "tailwindcss";
+@import "../styles/globals.css";
+
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *, .dark, .dark *));
+
+@theme {
+  --color-brand-50: #fdf2f4;
+  --color-brand-100: #fce4e8;
+  --color-brand-200: #f8c9d0;
+  --color-brand-300: #f29eaa;
+  --color-brand-400: #e66f7f;
+  --color-brand-500: #c94a5a;
+  --color-brand-600: #a83243;
+  --color-brand-700: #882637;
+  --color-brand-800: #6b202e;
+  --color-brand-900: #511b25;
+  --color-brand-950: #320f16;
+
+  --color-secondary-50: #fffbee;
+  --color-secondary-100: #fef3c7;
+  --color-secondary-200: #fde68a;
+  --color-secondary-300: #fcd34d;
+  --color-secondary-400: #fbbf24;
+  --color-secondary-500: #d9a441;
+  --color-secondary-600: #b8892f;
+  --color-secondary-700: #946c24;
+  --color-secondary-800: #73531f;
+  --color-secondary-900: #59401b;
+  --color-secondary-950: #35250f;
+
+  --color-neutral-50: #fafafa;
+  --color-neutral-100: #f5f5f5;
+  --color-neutral-200: #e5e5e5;
+  --color-neutral-300: #d4d4d4;
+  --color-neutral-400: #a3a3a3;
+  --color-neutral-500: #737373;
+  --color-neutral-600: #525252;
+  --color-neutral-700: #404040;
+  --color-neutral-800: #262626;
+  --color-neutral-900: #171717;
+  --color-neutral-950: #0a0a0a;
+
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-error: #ef4444;
+  --color-info: #3b82f6;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+}
+
+@theme inline {
+  --font-sans: var(--font-noto-sans, "Noto Sans"), var(--font-noto-sinhala, "Noto Sans Sinhala"), var(--font-noto-tamil, "Noto Sans Tamil"), "Noto Sans", "Noto Sans Sinhala", "Noto Sans Tamil", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+:root {
+  --font-noto-sans: "Noto Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-noto-sinhala: "Noto Sans Sinhala", "Noto Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-noto-tamil: "Noto Sans Tamil", "Noto Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --background: #ffffff;
+  --foreground: #171717;
+  --font-sans: var(--font-noto-sans), var(--font-noto-sinhala), var(--font-noto-tamil), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* Locale-aware typography cascades */
+html[lang="si"],
+body[data-locale="si"] {
+  --font-sans: var(--font-noto-sinhala, "Noto Sans Sinhala"), var(--font-noto-sans, "Noto Sans"), "Noto Sans Sinhala", "Noto Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+html[lang="ta"],
+body[data-locale="ta"] {
+  --font-sans: var(--font-noto-tamil, "Noto Sans Tamil"), var(--font-noto-sans, "Noto Sans"), "Noto Sans Tamil", "Noto Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.dark,
+[data-theme="dark"] {
+  --background: #000000;
+  --foreground: #fafafa;
+}
+
+html {
+  font-family: var(--font-sans);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}
+
+/* Ensure interactive controls inherit Noto Sans globally */
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit;
+}
+
+/* Smooth language transition animation */
+@keyframes localeFadeIn {
+  0% {
+    opacity: 0.88;
+    filter: blur(2px);
+    transform: translateY(2px);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0px);
+    transform: translateY(0);
+  }
+}
+
+.animate-locale-fade {
+  animation: localeFadeIn 260ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Indeterminate top progress bar */
+@keyframes indeterminateProgress {
+  0% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.animate-indeterminate-progress {
+  animation: indeterminateProgress 0.85s ease-in-out infinite;
+}
+
+/* Native Browser View Transitions API */
+::view-transition-old(root) {
+  animation: 180ms cubic-bezier(0.4, 0, 0.2, 1) both fade-out;
+}
+
+::view-transition-new(root) {
+  animation: 240ms cubic-bezier(0, 0, 0.2, 1) both fade-in;
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* react-phone-number-input styling refinements */
+.phone-input-wrapper .PhoneInput {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.phone-input-wrapper .PhoneInputCountry {
+  display: flex;
+  align-items: center;
+  align-self: center;
+  gap: 0.35rem;
+  padding-right: 0.6rem;
+  margin-right: 0.25rem;
+  border-right: 1px solid var(--neutral-200);
+  cursor: pointer;
+}
+
+.dark .phone-input-wrapper .PhoneInputCountry {
+  border-right-color: var(--neutral-800);
+}
+
+.phone-input-wrapper .PhoneInputCountryIcon {
+  width: 1.35rem;
+  height: 0.95rem;
+  border-radius: 2px;
+  overflow: hidden;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08);
+}
+
+.phone-input-wrapper .PhoneInputCountrySelect {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 10;
+  border: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.phone-input-wrapper .PhoneInputCountrySelectArrow {
+  border-color: currentColor;
+  opacity: 0.5;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+.phone-input-wrapper .PhoneInputCountry:hover .PhoneInputCountrySelectArrow {
+  opacity: 0.9;
+}
+
+/* Pillars Section - Neo-Brutalist Tilted & Swaying Cards ("eka eka hadeta / helawena widihata") */
+@keyframes pillarSway0 {
+  0% {
+    transform: translateY(-8px) rotate(-2.2deg) scale(1.02);
+  }
+  25% {
+    transform: translateY(-12px) rotate(1.2deg) scale(1.02);
+  }
+  50% {
+    transform: translateY(-9px) rotate(-3.2deg) scale(1.02);
+  }
+  75% {
+    transform: translateY(-11px) rotate(0.8deg) scale(1.02);
+  }
+  100% {
+    transform: translateY(-8px) rotate(-2.2deg) scale(1.02);
+  }
+}
+
+@keyframes pillarSway1 {
+  0% {
+    transform: translateY(-10px) rotate(1.8deg) scale(1.02);
+  }
+  25% {
+    transform: translateY(-13px) rotate(-1.5deg) scale(1.02);
+  }
+  50% {
+    transform: translateY(-9px) rotate(3deg) scale(1.02);
+  }
+  75% {
+    transform: translateY(-12px) rotate(-0.5deg) scale(1.02);
+  }
+  100% {
+    transform: translateY(-10px) rotate(1.8deg) scale(1.02);
+  }
+}
+
+@keyframes pillarSway2 {
+  0% {
+    transform: translateY(-8px) rotate(-1.6deg) scale(1.02);
+  }
+  25% {
+    transform: translateY(-12px) rotate(1.6deg) scale(1.02);
+  }
+  50% {
+    transform: translateY(-9px) rotate(-2.8deg) scale(1.02);
+  }
+  75% {
+    transform: translateY(-11px) rotate(0.6deg) scale(1.02);
+  }
+  100% {
+    transform: translateY(-8px) rotate(-1.6deg) scale(1.02);
+  }
+}
+
+.pillar-tilted-card {
+  position: relative;
+  border-width: 2.5px;
+  border-color: #882637;
+  border-radius: 26px;
+  background-color: #FFFBEB;
+  box-shadow: 6px 6px 0px 0px #882637;
+  transform-origin: center center;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease, border-color 0.25s ease;
+  will-change: transform, box-shadow;
+}
+
+:is(.dark, [data-theme="dark"]) .pillar-tilted-card {
+  background-color: #141414;
+  border-color: #882637;
+  box-shadow: 6px 6px 0px 0px #511b25;
+}
+
+/* Distinct base tilts ("eka eka hadeta") */
+.pillar-card-pos-0 {
+  transform: rotate(-1deg) translateY(0);
+}
+.pillar-card-pos-1 {
+  transform: rotate(1deg) translateY(0);
+}
+.pillar-card-pos-2 {
+  transform: rotate(-0.8deg) translateY(0);
+}
+
+@media (min-width: 768px) {
+  .pillar-card-pos-0 {
+    transform: rotate(-2.2deg) translateY(4px);
+  }
+  .pillar-card-pos-1 {
+    transform: rotate(1.8deg) translateY(-6px);
+  }
+  .pillar-card-pos-2 {
+    transform: rotate(-1.6deg) translateY(6px);
+  }
+}
+
+/* Hover Swaying Animation ("hover karaddi helawena widihata") */
+.pillar-card-pos-0:hover {
+  animation: pillarSway0 0.85s ease-in-out 2 forwards;
+  box-shadow: 10px 10px 0px 0px #882637;
+  z-index: 30;
+}
+:is(.dark, [data-theme="dark"]) .pillar-card-pos-0:hover {
+  box-shadow: 10px 10px 0px 0px #511b25;
+}
+
+.pillar-card-pos-1:hover {
+  animation: pillarSway1 0.85s ease-in-out 2 forwards;
+  box-shadow: 10px 10px 0px 0px #882637;
+  z-index: 30;
+}
+:is(.dark, [data-theme="dark"]) .pillar-card-pos-1:hover {
+  box-shadow: 10px 10px 0px 0px #511b25;
+}
+
+.pillar-card-pos-2:hover {
+  animation: pillarSway2 0.85s ease-in-out 2 forwards;
+  box-shadow: 10px 10px 0px 0px #882637;
+  z-index: 30;
+}
+:is(.dark, [data-theme="dark"]) .pillar-card-pos-2:hover {
+  box-shadow: 10px 10px 0px 0px #511b25;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pillar-card-pos-0:hover,
+  .pillar-card-pos-1:hover,
+  .pillar-card-pos-2:hover,
+  .faq-item-pos-0:hover,
+  .faq-item-pos-1:hover,
+  .faq-item-pos-2:hover,
+  .faq-item-pos-3:hover,
+  .faq-item-pos-4:hover {
+    animation: none;
+    transform: translateY(-4px);
+  }
+}
+
+/* FAQ Accordion - Neo-Brutalist Tilted & Swaying Items ("me box wage / shadow ekak awit tiyena widihata") */
+@keyframes faqSway0 {
+  0% { transform: translateY(-6px) rotate(-1.8deg) scale(1.01); }
+  25% { transform: translateY(-9px) rotate(1.2deg) scale(1.01); }
+  50% { transform: translateY(-6px) rotate(-2.6deg) scale(1.01); }
+  75% { transform: translateY(-8px) rotate(0.6deg) scale(1.01); }
+  100% { transform: translateY(-6px) rotate(-1.8deg) scale(1.01); }
+}
+
+@keyframes faqSway1 {
+  0% { transform: translateY(-6px) rotate(1.6deg) scale(1.01); }
+  25% { transform: translateY(-9px) rotate(-1.3deg) scale(1.01); }
+  50% { transform: translateY(-6px) rotate(2.5deg) scale(1.01); }
+  75% { transform: translateY(-8px) rotate(-0.5deg) scale(1.01); }
+  100% { transform: translateY(-6px) rotate(1.6deg) scale(1.01); }
+}
+
+@keyframes faqSway2 {
+  0% { transform: translateY(-6px) rotate(-1.5deg) scale(1.01); }
+  25% { transform: translateY(-9px) rotate(1.1deg) scale(1.01); }
+  50% { transform: translateY(-6px) rotate(-2.4deg) scale(1.01); }
+  75% { transform: translateY(-8px) rotate(0.5deg) scale(1.01); }
+  100% { transform: translateY(-6px) rotate(-1.5deg) scale(1.01); }
+}
+
+@keyframes faqSway3 {
+  0% { transform: translateY(-6px) rotate(1.7deg) scale(1.01); }
+  25% { transform: translateY(-9px) rotate(-1.1deg) scale(1.01); }
+  50% { transform: translateY(-6px) rotate(2.4deg) scale(1.01); }
+  75% { transform: translateY(-8px) rotate(-0.4deg) scale(1.01); }
+  100% { transform: translateY(-6px) rotate(1.7deg) scale(1.01); }
+}
+
+@keyframes faqSway4 {
+  0% { transform: translateY(-6px) rotate(-1.4deg) scale(1.01); }
+  25% { transform: translateY(-9px) rotate(1.2deg) scale(1.01); }
+  50% { transform: translateY(-6px) rotate(-2.2deg) scale(1.01); }
+  75% { transform: translateY(-8px) rotate(0.4deg) scale(1.01); }
+  100% { transform: translateY(-6px) rotate(-1.4deg) scale(1.01); }
+}
+
+.faq-tilted-item {
+  position: relative;
+  border-width: 2.5px;
+  border-color: #882637;
+  border-radius: 22px;
+  background-color: #FFFBEB;
+  box-shadow: 6px 6px 0px 0px #882637;
+  transform-origin: center center;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease, border-color 0.25s ease;
+  will-change: transform, box-shadow;
+}
+
+:is(.dark, [data-theme="dark"]) .faq-tilted-item {
+  background-color: #141414;
+  border-color: #882637;
+  box-shadow: 6px 6px 0px 0px #511b25;
+}
+
+/* Individual tilts on mobile */
+.faq-item-pos-0 { transform: rotate(-0.8deg); }
+.faq-item-pos-1 { transform: rotate(0.8deg); }
+.faq-item-pos-2 { transform: rotate(-0.7deg); }
+.faq-item-pos-3 { transform: rotate(0.8deg); }
+.faq-item-pos-4 { transform: rotate(-0.6deg); }
+
+/* Distinct individual tilts on md / desktop ("eka eka hadeta") */
+@media (min-width: 768px) {
+  .faq-item-pos-0 { transform: rotate(-1.8deg) translateY(2px); }
+  .faq-item-pos-1 { transform: rotate(1.6deg) translateY(-2px); }
+  .faq-item-pos-2 { transform: rotate(-1.5deg) translateY(2px); }
+  .faq-item-pos-3 { transform: rotate(1.7deg) translateY(-2px); }
+  .faq-item-pos-4 { transform: rotate(-1.4deg) translateY(1px); }
+}
+
+/* Hover swaying animations and shadow expansion ("hover karaddi helawena widihata") */
+.faq-item-pos-0:not(.faq-item-open):hover {
+  animation: faqSway0 0.85s ease-in-out 2 forwards;
+  box-shadow: 10px 10px 0px 0px #882637;
+  z-index: 30;
+}
+.faq-item-pos-1:not(.faq-item-open):hover {
+  animation: faqSway1 0.85s ease-in-out 2 forwards;
+  box-shadow: 10px 10px 0px 0px #882637;
+  z-index: 30;
+}
+.faq-item-pos-2:not(.faq-item-open):hover {
+  animation: faqSway2 0.85s ease-in-out 2 forwards;
+  box-shadow: 10px 10px 0px 0px #882637;
+  z-index: 30;
+}
+.faq-item-pos-3:not(.faq-item-open):hover {
+  animation: faqSway3 0.85s ease-in-out 2 forwards;
+  box-shadow: 10px 10px 0px 0px #882637;
+  z-index: 30;
+}
+.faq-item-pos-4:not(.faq-item-open):hover {
+  animation: faqSway4 0.85s ease-in-out 2 forwards;
+  box-shadow: 10px 10px 0px 0px #882637;
+  z-index: 30;
+}
+
+:is(.dark, [data-theme="dark"]) .faq-item-pos-0:hover,
+:is(.dark, [data-theme="dark"]) .faq-item-pos-1:hover,
+:is(.dark, [data-theme="dark"]) .faq-item-pos-2:hover,
+:is(.dark, [data-theme="dark"]) .faq-item-pos-3:hover,
+:is(.dark, [data-theme="dark"]) .faq-item-pos-4:hover {
+  box-shadow: 10px 10px 0px 0px #511b25;
+}
+
+/* Open / Active state */
+.faq-tilted-item.faq-item-open {
+  transform: rotate(0deg) scale(1.01);
+  box-shadow: 7px 7px 0px 0px #882637;
+  border-color: #882637;
+  z-index: 25;
+}
+:is(.dark, [data-theme="dark"]) .faq-tilted-item.faq-item-open {
+  box-shadow: 7px 7px 0px 0px #511b25;
+}
+.faq-tilted-item.faq-item-open:hover {
+  transform: rotate(0deg) translateY(-2px) scale(1.01);
+  box-shadow: 10px 10px 0px 0px #882637;
+}
+:is(.dark, [data-theme="dark"]) .faq-tilted-item.faq-item-open:hover {
+  box-shadow: 10px 10px 0px 0px #511b25;
+}
+
+/* CTA Banner Section - Neo-Brutalist Tilted & Swaying Box */
+@keyframes ctaBannerSway {
+  0% { transform: translateY(-6px) rotate(-0.8deg) scale(1.008); }
+  25% { transform: translateY(-8px) rotate(0.6deg) scale(1.008); }
+  50% { transform: translateY(-6px) rotate(-1.2deg) scale(1.008); }
+  75% { transform: translateY(-8px) rotate(0.4deg) scale(1.008); }
+  100% { transform: translateY(-6px) rotate(-0.8deg) scale(1.008); }
+}
+
+.cta-tilted-banner {
+  position: relative;
+  border-width: 2.5px;
+  border-color: #882637;
+  border-radius: 30px;
+  background-color: #2D0F16;
+  box-shadow: 8px 8px 0px 0px #882637;
+  transform-origin: center center;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+  will-change: transform, box-shadow;
+}
+
+:is(.dark, [data-theme="dark"]) .cta-tilted-banner {
+  background-color: #1E080E;
+  border-color: #882637;
+  box-shadow: 8px 8px 0px 0px #511b25;
+}
+
+@media (min-width: 768px) {
+  .cta-tilted-banner {
+    transform: rotate(-0.8deg);
+  }
+}
+
+.cta-tilted-banner:hover {
+  animation: ctaBannerSway 0.9s ease-in-out 2 forwards;
+  box-shadow: 12px 12px 0px 0px #882637;
+  z-index: 30;
+}
+
+:is(.dark, [data-theme="dark"]) .cta-tilted-banner:hover {
+  box-shadow: 12px 12px 0px 0px #511b25;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cta-tilted-banner:hover {
+    animation: none;
+    transform: translateY(-4px);
+  }
+}
+
+/* Progress Carousel - Neo-Brutalist Tilted & Swaying Cards */
+@keyframes progressSway0 {
+  0% { transform: translateY(-8px) rotate(-1.4deg) scale(1.015); }
+  25% { transform: translateY(-11px) rotate(1deg) scale(1.015); }
+  50% { transform: translateY(-8px) rotate(-2deg) scale(1.015); }
+  75% { transform: translateY(-10px) rotate(0.6deg) scale(1.015); }
+  100% { transform: translateY(-8px) rotate(-1.4deg) scale(1.015); }
+}
+
+@keyframes progressSway1 {
+  0% { transform: translateY(-8px) rotate(1.4deg) scale(1.015); }
+  25% { transform: translateY(-11px) rotate(-1deg) scale(1.015); }
+  50% { transform: translateY(-8px) rotate(2deg) scale(1.015); }
+  75% { transform: translateY(-10px) rotate(-0.5deg) scale(1.015); }
+  100% { transform: translateY(-8px) rotate(1.4deg) scale(1.015); }
+}
+
+.progress-tilted-card {
+  position: relative;
+  border-width: 2.5px;
+  border-color: #882637;
+  border-radius: 26px;
+  background-color: #FFFBEB;
+  box-shadow: 6px 6px 0px 0px #882637;
+  transform-origin: center center;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease, border-color 0.25s ease;
+  will-change: transform, box-shadow;
+}
+
+:is(.dark, [data-theme="dark"]) .progress-tilted-card {
+  background-color: #141414;
+  border-color: #882637;
+  box-shadow: 6px 6px 0px 0px #511b25;
+}
+
+/* Distinct BOLD tilts on mobile and desktop ("ada wela") */
+.progress-card-pos-0 { transform: rotate(-1.2deg); }
+.progress-card-pos-1 { transform: rotate(1.2deg); }
+.progress-card-pos-2 { transform: rotate(-1deg); }
+.progress-card-pos-3 { transform: rotate(1.2deg); }
+
+@media (min-width: 768px) {
+  .progress-card-pos-0 { transform: rotate(-2.2deg) translateY(4px); }
+  .progress-card-pos-1 { transform: rotate(2.2deg) translateY(-4px); }
+  .progress-card-pos-2 { transform: rotate(-2deg) translateY(4px); }
+  .progress-card-pos-3 { transform: rotate(2.2deg) translateY(-3px); }
+}
+
+.progress-card-pos-0:hover,
+.progress-card-pos-2:hover {
+  animation: progressSway0 0.85s ease-in-out 2 forwards;
+  box-shadow: 10px 10px 0px 0px #882637;
+  z-index: 30;
+}
+
+.progress-card-pos-1:hover,
+.progress-card-pos-3:hover {
+  animation: progressSway1 0.85s ease-in-out 2 forwards;
+  box-shadow: 10px 10px 0px 0px #882637;
+  z-index: 30;
+}
+
+:is(.dark, [data-theme="dark"]) .progress-card-pos-0:hover,
+:is(.dark, [data-theme="dark"]) .progress-card-pos-1:hover,
+:is(.dark, [data-theme="dark"]) .progress-card-pos-2:hover,
+:is(.dark, [data-theme="dark"]) .progress-card-pos-3:hover {
+  box-shadow: 10px 10px 0px 0px #511b25;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .progress-card-pos-0:hover,
+  .progress-card-pos-1:hover,
+  .progress-card-pos-2:hover,
+  .progress-card-pos-3:hover {
+    animation: none;
+    transform: translateY(-4px);
+  }
+}
+
+/* Recovery Stories - Neo-Brutalist Tilted & Swaying Cards ("ada wela / helawena widihata") */
+@keyframes storySwayLeft {
+  0% { transform: translateY(-8px) rotate(-2.2deg) scale(1.015); }
+  25% { transform: translateY(-12px) rotate(1.2deg) scale(1.015); }
+  50% { transform: translateY(-8px) rotate(-3deg) scale(1.015); }
+  75% { transform: translateY(-11px) rotate(0.8deg) scale(1.015); }
+  100% { transform: translateY(-8px) rotate(-2.2deg) scale(1.015); }
+}
+
+@keyframes storySwayRight {
+  0% { transform: translateY(-8px) rotate(2deg) scale(1.015); }
+  25% { transform: translateY(-12px) rotate(-1.5deg) scale(1.015); }
+  50% { transform: translateY(-8px) rotate(2.8deg) scale(1.015); }
+  75% { transform: translateY(-11px) rotate(-0.6deg) scale(1.015); }
+  100% { transform: translateY(-8px) rotate(2deg) scale(1.015); }
+}
+
+.story-tilted-card {
+  position: relative;
+  border-width: 2.5px;
+  border-color: #882637;
+  border-radius: 26px;
+  background-color: #FFFBEB;
+  box-shadow: 7px 7px 0px 0px #882637;
+  transform-origin: center center;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease, border-color 0.25s ease;
+  will-change: transform, box-shadow;
+}
+
+:is(.dark, [data-theme="dark"]) .story-tilted-card {
+  background-color: #141414;
+  border-color: #882637;
+  box-shadow: 7px 7px 0px 0px #511b25;
+}
+
+/* Distinct BOLD tilts ("ada wela") */
+.story-card-left {
+  transform: rotate(-1.5deg) !important;
+}
+.story-card-right-1 {
+  transform: rotate(1.5deg) !important;
+}
+.story-card-right-2 {
+  transform: rotate(-1.2deg) !important;
+}
+
+@media (min-width: 768px) {
+  .story-card-left {
+    transform: rotate(-2.5deg) translateY(4px) !important;
+  }
+  .story-card-right-1 {
+    transform: rotate(2.2deg) translateY(-4px) !important;
+  }
+  .story-card-right-2 {
+    transform: rotate(-2deg) translateY(6px) !important;
+  }
+}
+
+.story-card-left:hover {
+  animation: storySwayLeft 0.85s ease-in-out 2 forwards !important;
+  box-shadow: 11px 11px 0px 0px #882637 !important;
+  z-index: 30;
+}
+
+.story-card-right-1:hover {
+  animation: storySwayRight 0.85s ease-in-out 2 forwards !important;
+  box-shadow: 11px 11px 0px 0px #882637 !important;
+  z-index: 30;
+}
+
+.story-card-right-2:hover {
+  animation: storySwayLeft 0.85s ease-in-out 2 forwards !important;
+  box-shadow: 11px 11px 0px 0px #882637 !important;
+  z-index: 30;
+}
+
+:is(.dark, [data-theme="dark"]) .story-card-left:hover,
+:is(.dark, [data-theme="dark"]) .story-card-right-1:hover,
+:is(.dark, [data-theme="dark"]) .story-card-right-2:hover {
+  box-shadow: 11px 11px 0px 0px #511b25 !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .story-card-left:hover,
+  .story-card-right-1:hover,
+  .story-card-right-2:hover {
+    animation: none !important;
+    transform: translateY(-4px) !important;
+  }
+}
+
+/* Hero Section - Neo-Brutalist Tilted & Swaying Cards ("ada wela / helawena widihata") */
+@keyframes heroCardSwayLeft {
+  0% { transform: translateY(-4px) rotate(-2.4deg) scale(1.02); }
+  25% { transform: translateY(-7px) rotate(1deg) scale(1.02); }
+  50% { transform: translateY(-4px) rotate(-2.8deg) scale(1.02); }
+  75% { transform: translateY(-6px) rotate(0.6deg) scale(1.02); }
+  100% { transform: translateY(-4px) rotate(-2.4deg) scale(1.02); }
+}
+
+@keyframes heroCardSwayRight {
+  0% { transform: translateY(-4px) rotate(2.2deg) scale(1.02); }
+  25% { transform: translateY(-7px) rotate(-1deg) scale(1.02); }
+  50% { transform: translateY(-4px) rotate(2.6deg) scale(1.02); }
+  75% { transform: translateY(-6px) rotate(-0.6deg) scale(1.02); }
+  100% { transform: translateY(-4px) rotate(2.2deg) scale(1.02); }
+}
+
+@keyframes heroMapCardSway {
+  0% { transform: translateY(-4px) rotate(-2.5deg) scale(1.02); }
+  25% { transform: translateY(-8px) rotate(1.2deg) scale(1.02); }
+  50% { transform: translateY(-4px) rotate(-2.9deg) scale(1.02); }
+  75% { transform: translateY(-7px) rotate(0.8deg) scale(1.02); }
+  100% { transform: translateY(-4px) rotate(-2.5deg) scale(1.02); }
+}
+
+.hero-feature-card-left {
+  position: relative;
+  border-width: 2.5px;
+  border-color: #882637;
+  border-radius: 20px;
+  background-color: #FFFBEB;
+  box-shadow: 6px 6px 0px 0px #882637;
+  transform: rotate(-2.4deg);
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
+  will-change: transform, box-shadow;
+}
+
+.hero-feature-card-right {
+  position: relative;
+  border-width: 2.5px;
+  border-color: #882637;
+  border-radius: 20px;
+  background-color: #FFFBEB;
+  box-shadow: 6px 6px 0px 0px #882637;
+  transform: rotate(2.2deg);
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
+  will-change: transform, box-shadow;
+}
+
+.hero-map-stat-card {
+  border-width: 2.5px;
+  border-color: #882637;
+  border-radius: 24px;
+  background-color: #FFFBEB;
+  box-shadow: 7px 7px 0px 0px #882637;
+  transform: rotate(-2.5deg);
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
+  will-change: transform, box-shadow;
+}
+
+:is(.dark, [data-theme="dark"]) .hero-feature-card-left,
+:is(.dark, [data-theme="dark"]) .hero-feature-card-right {
+  background-color: #171717;
+  border-color: #882637;
+  box-shadow: 6px 6px 0px 0px #511b25;
+}
+
+:is(.dark, [data-theme="dark"]) .hero-map-stat-card {
+  background-color: #1A1416;
+  border-color: #882637;
+  box-shadow: 7px 7px 0px 0px #511b25;
+}
+
+.hero-feature-card-left:hover {
+  animation: heroCardSwayLeft 0.85s ease-in-out 2 forwards !important;
+  box-shadow: 9px 9px 0px 0px #882637 !important;
+  z-index: 20;
+}
+
+.hero-feature-card-right:hover {
+  animation: heroCardSwayRight 0.85s ease-in-out 2 forwards !important;
+  box-shadow: 9px 9px 0px 0px #882637 !important;
+  z-index: 20;
+}
+
+.hero-map-stat-card:hover {
+  animation: heroMapCardSway 0.85s ease-in-out 2 forwards !important;
+  box-shadow: 10px 10px 0px 0px #882637 !important;
+  z-index: 40;
+}
+
+:is(.dark, [data-theme="dark"]) .hero-feature-card-left:hover,
+:is(.dark, [data-theme="dark"]) .hero-feature-card-right:hover {
+  box-shadow: 9px 9px 0px 0px #511b25 !important;
+}
+
+:is(.dark, [data-theme="dark"]) .hero-map-stat-card:hover {
+  box-shadow: 10px 10px 0px 0px #511b25 !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-feature-card-left:hover,
+  .hero-feature-card-right:hover,
+  .hero-map-stat-card:hover {
+    animation: none !important;
+    transform: translateY(-4px) !important;
+  }
+}
+
+/* Statistics Section - Neo-Brutalist Tilted & Swaying Cards on Hover ("hover karaddi rotate wenna") */
+@keyframes statCardSwayLeft {
+  0% { transform: translateY(-6px) rotate(-1.8deg) scale(1.015); }
+  25% { transform: translateY(-10px) rotate(1.2deg) scale(1.015); }
+  50% { transform: translateY(-6px) rotate(-2.2deg) scale(1.015); }
+  75% { transform: translateY(-9px) rotate(0.8deg) scale(1.015); }
+  100% { transform: translateY(-6px) rotate(-1.8deg) scale(1.015); }
+}
+
+@keyframes statCardSwayRight {
+  0% { transform: translateY(-6px) rotate(1.8deg) scale(1.015); }
+  25% { transform: translateY(-10px) rotate(-1.2deg) scale(1.015); }
+  50% { transform: translateY(-6px) rotate(2.2deg) scale(1.015); }
+  75% { transform: translateY(-9px) rotate(-0.6deg) scale(1.015); }
+  100% { transform: translateY(-6px) rotate(1.8deg) scale(1.015); }
+}
+
+@keyframes statMainCardSway {
+  0% { transform: translateY(-4px) rotate(-0.7deg); }
+  25% { transform: translateY(-8px) rotate(0.5deg); }
+  50% { transform: translateY(-4px) rotate(-0.9deg); }
+  75% { transform: translateY(-7px) rotate(0.3deg); }
+  100% { transform: translateY(-4px) rotate(-0.7deg); }
+}
+
+.stat-card-item {
+  transform-origin: center center;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
+  will-change: transform, box-shadow;
+}
+
+/* Distinct BOLD tilts by default ("ada wela / eka eka widihata rotate wela") */
+.stat-main-card {
+  transform-origin: center center;
+  transform: rotate(-0.8deg);
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
+  will-change: transform, box-shadow;
+}
+
+.stat-card-item-1 {
+  transform: rotate(-2deg);
+}
+
+.stat-card-item-2 {
+  transform: rotate(2deg);
+}
+
+.stat-card-item-3 {
+  transform: rotate(-1.8deg);
+}
+
+@media (min-width: 768px) {
+  .stat-main-card {
+    transform: rotate(-0.8deg) translateY(2px);
+  }
+  .stat-card-item-1 {
+    transform: rotate(-2.4deg) translateY(3px);
+  }
+  .stat-card-item-2 {
+    transform: rotate(2.4deg) translateY(-3px);
+  }
+  .stat-card-item-3 {
+    transform: rotate(-2.2deg) translateY(4px);
+  }
+}
+
+.stat-card-item-1:hover {
+  animation: statCardSwayLeft 0.85s ease-in-out 2 forwards !important;
+  box-shadow: 10px 10px 0px 0px #882637 !important;
+  z-index: 20;
+}
+
+.stat-card-item-2:hover {
+  animation: statCardSwayRight 0.85s ease-in-out 2 forwards !important;
+  box-shadow: 10px 10px 0px 0px #882637 !important;
+  z-index: 20;
+}
+
+.stat-card-item-3:hover {
+  animation: statCardSwayLeft 0.85s ease-in-out 2 forwards !important;
+  box-shadow: 10px 10px 0px 0px #882637 !important;
+  z-index: 20;
+}
+
+.stat-main-card:hover {
+  animation: statMainCardSway 0.9s ease-in-out 2 forwards;
+  box-shadow: 10px 10px 0px 0px #882637 !important;
+}
+
+:is(.dark, [data-theme="dark"]) .stat-card-item-1:hover,
+:is(.dark, [data-theme="dark"]) .stat-card-item-2:hover,
+:is(.dark, [data-theme="dark"]) .stat-card-item-3:hover {
+  box-shadow: 10px 10px 0px 0px #511b25 !important;
+}
+
+:is(.dark, [data-theme="dark"]) .stat-main-card:hover {
+  box-shadow: 10px 10px 0px 0px #511b25 !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stat-card-item-1:hover,
+  .stat-card-item-2:hover,
+  .stat-card-item-3:hover,
+  .stat-main-card:hover {
+    animation: none !important;
+    transform: translateY(-4px) !important;
+  }
+}
+
+/* About Page - Neo-Brutalist Tilted & Swaying Cards on Hover ("hover karaddi rotate wenna") */
+@keyframes aboutCardSwayLeft {
+  0% { transform: translateY(-6px) rotate(-1.8deg) scale(1.015); }
+  25% { transform: translateY(-10px) rotate(1.2deg) scale(1.015); }
+  50% { transform: translateY(-6px) rotate(-2.2deg) scale(1.015); }
+  75% { transform: translateY(-9px) rotate(0.8deg) scale(1.015); }
+  100% { transform: translateY(-6px) rotate(-1.8deg) scale(1.015); }
+}
+
+@keyframes aboutCardSwayRight {
+  0% { transform: translateY(-6px) rotate(1.8deg) scale(1.015); }
+  25% { transform: translateY(-10px) rotate(-1.2deg) scale(1.015); }
+  50% { transform: translateY(-6px) rotate(2.2deg) scale(1.015); }
+  75% { transform: translateY(-9px) rotate(-0.6deg) scale(1.015); }
+  100% { transform: translateY(-6px) rotate(1.8deg) scale(1.015); }
+}
+
+@keyframes aboutShowcaseSway {
+  0% { transform: translateY(-4px) rotate(-0.6deg); }
+  25% { transform: translateY(-7px) rotate(0.4deg); }
+  50% { transform: translateY(-4px) rotate(-0.8deg); }
+  75% { transform: translateY(-6px) rotate(0.3deg); }
+  100% { transform: translateY(-4px) rotate(-0.6deg); }
+}
+
+.about-card-item {
+  transform-origin: center center;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
+  will-change: transform, box-shadow;
+}
+
+/* Distinct BOLD tilts for About Page ("ada wela / eka eka widihata rotate wela") */
+.about-card-left {
+  transform: rotate(-1.8deg);
+}
+
+.about-card-right {
+  transform: rotate(1.8deg);
+}
+
+.about-showcase-card {
+  transform-origin: center center;
+  transform: rotate(-0.8deg);
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
+  will-change: transform, box-shadow;
+}
+
+@media (min-width: 768px) {
+  .about-card-left {
+    transform: rotate(-2.4deg) translateY(3px);
+  }
+  .about-card-right {
+    transform: rotate(2.4deg) translateY(-3px);
+  }
+  .about-showcase-card {
+    transform: rotate(-0.8deg) translateY(2px);
+  }
+}
+
+.about-card-left:hover {
+  animation: aboutCardSwayLeft 0.85s ease-in-out 2 forwards !important;
+  box-shadow: 10px 10px 0px 0px #882637 !important;
+  z-index: 20;
+}
+
+.about-card-right:hover {
+  animation: aboutCardSwayRight 0.85s ease-in-out 2 forwards !important;
+  box-shadow: 10px 10px 0px 0px #882637 !important;
+  z-index: 20;
+}
+
+.about-showcase-card:hover {
+  animation: aboutShowcaseSway 0.9s ease-in-out 2 forwards;
+  box-shadow: 11px 11px 0px 0px #882637 !important;
+}
+
+:is(.dark, [data-theme="dark"]) .about-card-left:hover,
+:is(.dark, [data-theme="dark"]) .about-card-right:hover {
+  box-shadow: 10px 10px 0px 0px #511b25 !important;
+}
+
+:is(.dark, [data-theme="dark"]) .about-showcase-card:hover {
+  box-shadow: 11px 11px 0px 0px #511b25 !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-card-left:hover,
+  .about-card-right:hover,
+  .about-showcase-card:hover {
+    animation: none !important;
+    transform: translateY(-4px) !important;
+  }
+}
+
+/* Contact Page - Neo-Brutalist Tilted & Swaying Cards ("ada wela / hover karaddi rotate wenna") */
+@keyframes contactCardSwayLeft {
+  0% { transform: translateY(-6px) rotate(-1.8deg) scale(1.015); }
+  25% { transform: translateY(-10px) rotate(1.2deg) scale(1.015); }
+  50% { transform: translateY(-6px) rotate(-2.2deg) scale(1.015); }
+  75% { transform: translateY(-9px) rotate(0.8deg) scale(1.015); }
+  100% { transform: translateY(-6px) rotate(-1.8deg) scale(1.015); }
+}
+
+@keyframes contactCardSwayRight {
+  0% { transform: translateY(-6px) rotate(1.8deg) scale(1.015); }
+  25% { transform: translateY(-10px) rotate(-1.2deg) scale(1.015); }
+  50% { transform: translateY(-6px) rotate(2.2deg) scale(1.015); }
+  75% { transform: translateY(-9px) rotate(-0.6deg) scale(1.015); }
+  100% { transform: translateY(-6px) rotate(1.8deg) scale(1.015); }
+}
+
+@keyframes contactFormSway {
+  0% { transform: translateY(-4px) rotate(-0.6deg); }
+  25% { transform: translateY(-7px) rotate(0.4deg); }
+  50% { transform: translateY(-4px) rotate(-0.8deg); }
+  75% { transform: translateY(-6px) rotate(0.3deg); }
+  100% { transform: translateY(-4px) rotate(-0.6deg); }
+}
+
+.contact-card-item {
+  transform-origin: center center;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
+  will-change: transform, box-shadow;
+}
+
+/* Distinct BOLD tilts by default ("ada wela") */
+.contact-form-card {
+  transform-origin: center center;
+  transform: rotate(-0.8deg);
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
+  will-change: transform, box-shadow;
+}
+
+.contact-hotlines-card {
+  transform: rotate(1.6deg);
+}
+
+.contact-office-card {
+  transform: rotate(-1.6deg);
+}
+
+.contact-call-card {
+  transform: rotate(1.8deg);
+  transform-origin: center center;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
+  will-change: transform, box-shadow;
+}
+
+@media (min-width: 768px) {
+  .contact-form-card {
+    transform: rotate(-0.8deg) translateY(2px);
+  }
+  .contact-hotlines-card {
+    transform: rotate(2deg) translateY(-2px);
+  }
+  .contact-office-card {
+    transform: rotate(-2deg) translateY(3px);
+  }
+  .contact-call-card {
+    transform: rotate(2.2deg) translateY(-2px);
+  }
+}
+
+.contact-form-card:hover {
+  animation: contactFormSway 0.9s ease-in-out 2 forwards;
+  box-shadow: 11px 11px 0px 0px #882637 !important;
+}
+
+.contact-hotlines-card:hover {
+  animation: contactCardSwayRight 0.85s ease-in-out 2 forwards !important;
+  box-shadow: 10px 10px 0px 0px #882637 !important;
+  z-index: 20;
+}
+
+.contact-office-card:hover {
+  animation: contactCardSwayLeft 0.85s ease-in-out 2 forwards !important;
+  box-shadow: 10px 10px 0px 0px #882637 !important;
+  z-index: 20;
+}
+
+.contact-call-card:hover {
+  animation: contactCardSwayRight 0.85s ease-in-out 2 forwards !important;
+  box-shadow: 9px 9px 0px 0px #882637 !important;
+  z-index: 20;
+}
+
+:is(.dark, [data-theme="dark"]) .contact-form-card:hover {
+  box-shadow: 11px 11px 0px 0px #511b25 !important;
+}
+
+:is(.dark, [data-theme="dark"]) .contact-hotlines-card:hover,
+:is(.dark, [data-theme="dark"]) .contact-office-card:hover {
+  box-shadow: 10px 10px 0px 0px #511b25 !important;
+}
+
+:is(.dark, [data-theme="dark"]) .contact-call-card:hover {
+  box-shadow: 9px 9px 0px 0px #511b25 !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contact-form-card:hover,
+  .contact-hotlines-card:hover,
+  .contact-office-card:hover,
+  .contact-call-card:hover {
+    animation: none !important;
+    transform: translateY(-4px) !important;
+  }
+}
+
+/* News Page - Neo-Brutalist Tilted & Swaying Images ("images wateta eham akrannna / ada wela / hover karaddi rotate") */
+@keyframes newsImageSwayLeft {
+  0% { transform: translateY(-4px) rotate(-1.8deg) scale(1.02); }
+  25% { transform: translateY(-7px) rotate(1.2deg) scale(1.02); }
+  50% { transform: translateY(-4px) rotate(-2.4deg) scale(1.02); }
+  75% { transform: translateY(-6px) rotate(0.8deg) scale(1.02); }
+  100% { transform: translateY(-4px) rotate(-1.8deg) scale(1.02); }
+}
+
+@keyframes newsImageSwayRight {
+  0% { transform: translateY(-4px) rotate(1.8deg) scale(1.02); }
+  25% { transform: translateY(-7px) rotate(-1.2deg) scale(1.02); }
+  50% { transform: translateY(-4px) rotate(2.4deg) scale(1.02); }
+  75% { transform: translateY(-6px) rotate(-0.8deg) scale(1.02); }
+  100% { transform: translateY(-4px) rotate(1.8deg) scale(1.02); }
+}
+
+@keyframes newsImageDetailSway {
+  0% { transform: translateY(-4px) rotate(-0.6deg) scale(1.008); }
+  25% { transform: translateY(-6px) rotate(0.4deg) scale(1.008); }
+  50% { transform: translateY(-4px) rotate(-0.8deg) scale(1.008); }
+  75% { transform: translateY(-5px) rotate(0.3deg) scale(1.008); }
+  100% { transform: translateY(-4px) rotate(-0.6deg) scale(1.008); }
+}
+
+.news-image-frame {
+  transform-origin: center center;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
+  will-change: transform, box-shadow;
+}
+
+/* Distinct tilts by default ("eka eka widihata / ada wela") */
+.news-image-featured {
+  transform: rotate(-1.4deg);
+}
+
+.news-image-left {
+  transform: rotate(-1.8deg);
+}
+
+.news-image-right {
+  transform: rotate(1.8deg);
+}
+
+.news-image-detail {
+  transform: rotate(-0.6deg);
+}
+
+@media (min-width: 640px) {
+  .news-image-featured {
+    transform: rotate(-1.6deg) translateY(2px);
+  }
+  .news-image-left {
+    transform: rotate(-2.2deg) translateY(2px);
+  }
+  .news-image-right {
+    transform: rotate(2.2deg) translateY(-2px);
+  }
+  .news-image-detail {
+    transform: rotate(-0.8deg) translateY(2px);
+  }
+}
+
+.news-image-featured:hover,
+.group:hover .news-image-featured {
+  animation: newsImageSwayLeft 0.85s ease-in-out 2 forwards !important;
+  box-shadow: 10px 10px 0px 0px #882637 !important;
+  z-index: 10;
+}
+
+.news-image-left:hover,
+.group:hover .news-image-left {
+  animation: newsImageSwayLeft 0.85s ease-in-out 2 forwards !important;
+  box-shadow: 8px 8px 0px 0px #882637 !important;
+  z-index: 10;
+}
+
+.news-image-right:hover,
+.group:hover .news-image-right {
+  animation: newsImageSwayRight 0.85s ease-in-out 2 forwards !important;
+  box-shadow: 8px 8px 0px 0px #882637 !important;
+  z-index: 10;
+}
+
+.news-image-detail:hover {
+  animation: newsImageDetailSway 0.9s ease-in-out 2 forwards !important;
+  box-shadow: 11px 11px 0px 0px #882637 !important;
+}
+
+:is(.dark, [data-theme="dark"]) .news-image-featured:hover,
+:is(.dark, [data-theme="dark"]) .group:hover .news-image-featured,
+:is(.dark, [data-theme="dark"]) .news-image-detail:hover {
+  box-shadow: 10px 10px 0px 0px #511b25 !important;
+}
+
+:is(.dark, [data-theme="dark"]) .news-image-left:hover,
+:is(.dark, [data-theme="dark"]) .group:hover .news-image-left,
+:is(.dark, [data-theme="dark"]) .news-image-right:hover,
+:is(.dark, [data-theme="dark"]) .group:hover .news-image-right {
+  box-shadow: 8px 8px 0px 0px #511b25 !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .news-image-featured:hover,
+  .group:hover .news-image-featured,
+  .news-image-left:hover,
+  .group:hover .news-image-left,
+  .news-image-right:hover,
+  .group:hover .news-image-right,
+  .news-image-detail:hover {
+    animation: none !important;
+    transform: translateY(-4px) !important;
+  }
+}
+
+/* Report Page - Neo-Brutalist Tilted & Swaying Cards ("report page eket ee widihatam hadanna error ekai success ekai ee dekat ee widhata") */
+@keyframes reportFormSway {
+  0% { transform: translateY(-4px) rotate(-0.4deg); }
+  25% { transform: translateY(-7px) rotate(0.4deg); }
+  50% { transform: translateY(-4px) rotate(-0.6deg); }
+  75% { transform: translateY(-6px) rotate(0.3deg); }
+  100% { transform: translateY(-4px) rotate(-0.4deg); }
+}
+
+@keyframes reportSuccessSway {
+  0% { transform: translateY(-5px) rotate(-0.5deg) scale(1.008); }
+  25% { transform: translateY(-8px) rotate(0.6deg) scale(1.008); }
+  50% { transform: translateY(-5px) rotate(-0.7deg) scale(1.008); }
+  75% { transform: translateY(-7px) rotate(0.5deg) scale(1.008); }
+  100% { transform: translateY(-5px) rotate(-0.5deg) scale(1.008); }
+}
+
+@keyframes reportErrorSway {
+  0% { transform: translateY(-5px) rotate(0.6deg) scale(1.008); }
+  25% { transform: translateY(-8px) rotate(-0.5deg) scale(1.008); }
+  50% { transform: translateY(-5px) rotate(0.8deg) scale(1.008); }
+  75% { transform: translateY(-7px) rotate(-0.4deg) scale(1.008); }
+  100% { transform: translateY(-5px) rotate(0.6deg) scale(1.008); }
+}
+
+@keyframes reportCardSwayLeft {
+  0% { transform: translateY(-5px) rotate(-1.8deg) scale(1.015); }
+  25% { transform: translateY(-8px) rotate(1.2deg) scale(1.015); }
+  50% { transform: translateY(-5px) rotate(-2.2deg) scale(1.015); }
+  75% { transform: translateY(-7px) rotate(0.8deg) scale(1.015); }
+  100% { transform: translateY(-5px) rotate(-1.8deg) scale(1.015); }
+}
+
+@keyframes reportCardSwayRight {
+  0% { transform: translateY(-5px) rotate(1.8deg) scale(1.015); }
+  25% { transform: translateY(-8px) rotate(-1.2deg) scale(1.015); }
+  50% { transform: translateY(-5px) rotate(2.2deg) scale(1.015); }
+  75% { transform: translateY(-7px) rotate(-0.6deg) scale(1.015); }
+  100% { transform: translateY(-5px) rotate(1.8deg) scale(1.015); }
+}
+
+.report-form-card,
+.report-success-card,
+.report-error-card,
+.report-info-card,
+.report-sidebar-card,
+.report-sidebar-conf {
+  transform-origin: center center;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
+  will-change: transform, box-shadow;
+}
+
+/* Default resting tilts ("eka eka widihata / ada wela") */
+.report-form-card {
+  transform: rotate(-0.4deg);
+}
+
+.report-success-card {
+  transform: rotate(-0.5deg);
+}
+
+.report-error-card {
+  transform: rotate(0.6deg);
+}
+
+.report-info-card-1 {
+  transform: rotate(-1.8deg);
+}
+
+.report-info-card-2 {
+  transform: rotate(1.8deg);
+}
+
+.report-info-card-3 {
+  transform: rotate(-1.6deg);
+}
+
+.report-sidebar-card-left {
+  transform: rotate(-1.6deg);
+}
+
+.report-sidebar-card-right {
+  transform: rotate(1.6deg);
+}
+
+.report-sidebar-conf {
+  transform: rotate(-1.2deg);
+}
+
+@media (min-width: 768px) {
+  .report-form-card {
+    transform: rotate(-0.4deg) translateY(2px);
+  }
+  .report-sidebar-card-left {
+    transform: rotate(-1.8deg) translateY(2px);
+  }
+  .report-sidebar-card-right {
+    transform: rotate(1.8deg) translateY(-2px);
+  }
+  .report-sidebar-conf {
+    transform: rotate(-1.4deg) translateY(2px);
+  }
+}
+
+.report-form-card:hover {
+  animation: reportFormSway 0.9s ease-in-out 2 forwards;
+  box-shadow: 10px 10px 0px 0px #882637 !important;
+}
+
+.report-success-card:hover {
+  animation: reportSuccessSway 0.9s ease-in-out 2 forwards;
+  box-shadow: 11px 11px 0px 0px #008a52 !important;
+}
+
+.report-error-card:hover {
+  animation: reportErrorSway 0.9s ease-in-out 2 forwards;
+  box-shadow: 11px 11px 0px 0px #882637 !important;
+}
+
+.report-info-card-1:hover {
+  animation: reportCardSwayLeft 0.85s ease-in-out 2 forwards !important;
+  box-shadow: 8px 8px 0px 0px #882637 !important;
+  z-index: 10;
+}
+
+.report-info-card-2:hover {
+  animation: reportCardSwayRight 0.85s ease-in-out 2 forwards !important;
+  box-shadow: 8px 8px 0px 0px #882637 !important;
+  z-index: 10;
+}
+
+.report-info-card-3:hover {
+  animation: reportCardSwayLeft 0.85s ease-in-out 2 forwards !important;
+  box-shadow: 8px 8px 0px 0px #882637 !important;
+  z-index: 10;
+}
+
+.report-sidebar-card-left:hover {
+  animation: reportCardSwayLeft 0.85s ease-in-out 2 forwards !important;
+  box-shadow: 8px 8px 0px 0px #882637 !important;
+  z-index: 10;
+}
+
+.report-sidebar-card-right:hover {
+  animation: reportCardSwayRight 0.85s ease-in-out 2 forwards !important;
+  box-shadow: 8px 8px 0px 0px #882637 !important;
+  z-index: 10;
+}
+
+.report-sidebar-conf:hover {
+  animation: reportCardSwayLeft 0.85s ease-in-out 2 forwards !important;
+  box-shadow: 8px 8px 0px 0px #008a52 !important;
+  z-index: 10;
+}
+
+:is(.dark, [data-theme="dark"]) .report-form-card:hover,
+:is(.dark, [data-theme="dark"]) .report-error-card:hover,
+:is(.dark, [data-theme="dark"]) .report-info-card-1:hover,
+:is(.dark, [data-theme="dark"]) .report-info-card-2:hover,
+:is(.dark, [data-theme="dark"]) .report-info-card-3:hover,
+:is(.dark, [data-theme="dark"]) .report-sidebar-card-left:hover,
+:is(.dark, [data-theme="dark"]) .report-sidebar-card-right:hover {
+  box-shadow: 10px 10px 0px 0px #511b25 !important;
+}
+
+:is(.dark, [data-theme="dark"]) .report-success-card:hover,
+:is(.dark, [data-theme="dark"]) .report-sidebar-conf:hover {
+  box-shadow: 10px 10px 0px 0px #064e3b !important;
+}
+
+/* Footer Hotline Cards - Neo-Brutalist Tilted & Gentle 2-Sway */
+@keyframes footerCardSwayTop {
+  0% { transform: translateY(-3px) rotate(-1.2deg); }
+  25% { transform: translateY(-5px) rotate(0.8deg); }
+  50% { transform: translateY(-3px) rotate(-1.5deg); }
+  75% { transform: translateY(-4px) rotate(0.4deg); }
+  100% { transform: translateY(-3px) rotate(-1.2deg); }
+}
+
+@keyframes footerCardSwayBottom {
+  0% { transform: translateY(-3px) rotate(1.2deg); }
+  25% { transform: translateY(-5px) rotate(-0.8deg); }
+  50% { transform: translateY(-3px) rotate(1.5deg); }
+  75% { transform: translateY(-4px) rotate(-0.4deg); }
+  100% { transform: translateY(-3px) rotate(1.2deg); }
+}
+
+.footer-card-item {
+  transform-origin: center center;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease, border-color 0.25s ease;
+  will-change: transform, box-shadow;
+}
+
+.footer-card-top {
+  transform: rotate(-1.2deg);
+}
+
+.footer-card-bottom {
+  transform: rotate(1.2deg);
+}
+
+@media (min-width: 768px) {
+  .footer-card-top {
+    transform: rotate(-1.5deg) translateY(1px);
+  }
+  .footer-card-bottom {
+    transform: rotate(1.5deg) translateY(-1px);
+  }
+}
+
+.footer-card-top:hover {
+  animation: footerCardSwayTop 0.85s ease-in-out 2 forwards !important;
+  box-shadow: 6px 6px 0px 0px #882637 !important;
+  z-index: 10;
+}
+
+.footer-card-bottom:hover {
+  animation: footerCardSwayBottom 0.85s ease-in-out 2 forwards !important;
+  box-shadow: 6px 6px 0px 0px #882637 !important;
+  z-index: 10;
+}
+
+:is(.dark, [data-theme="dark"]) .footer-card-top:hover,
+:is(.dark, [data-theme="dark"]) .footer-card-bottom:hover {
+  box-shadow: 6px 6px 0px 0px #511b25 !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .footer-card-top:hover,
+  .footer-card-bottom:hover {
+    animation: none !important;
+    transform: translateY(-2px) !important;
+  }
+}
+
+
+
+
+
+
+
