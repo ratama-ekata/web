@@ -260,6 +260,27 @@ export function LoginView() {
             </Button>
           </Box>
 
+
+          <Button
+            type="button"
+            fullWidth
+            variant="outlined"
+            color="primary"
+            disabled={isSubmitting}
+            onClick={() => router.push("/")}
+            sx={{
+              mt: 1.5,
+              py: 1.2,
+              fontSize: "0.95rem",
+              fontWeight: 600,
+              letterSpacing: "0.01em",
+              textTransform: "none",
+            }}
+          >
+            Back to Home
+          </Button>
+
+
           <Divider sx={{ my: 3 }} />
 
           {/* Security Notice */}
