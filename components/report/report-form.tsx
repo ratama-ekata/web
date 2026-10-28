@@ -302,7 +302,7 @@ export function ReportForm() {
             report_id?: string;
             reportId?: string;
             id?: string;
-          }>("/reports", formData);
+          }>("/suspect-reports/", formData);
           if (res?.data?.report_id) {
             refNum = res.data.report_id;
           } else if (res?.data?.reportId) {
@@ -313,14 +313,14 @@ export function ReportForm() {
             refNum = `RE-${new Date().getFullYear()}-${String(res.data.id).replace(/-/g, "").slice(0, 6).toUpperCase()}`;
           }
         } catch (err: unknown) {
-          // Fallback to direct /suspect-reports/
+          // Fallback to /reports
           try {
             const fallbackRes = await apiClient.post<{
               referenceNumber?: string;
               report_id?: string;
               reportId?: string;
               id?: string;
-            }>("/suspect-reports/", formData);
+            }>("/reports", formData);
             if (fallbackRes?.data?.report_id) {
               refNum = fallbackRes.data.report_id;
             } else if (fallbackRes?.data?.reportId) {

@@ -146,8 +146,8 @@ export async function POST(request: Request) {
         );
       }
 
-      // Forward multipart/form-data directly to Python backend
-      const backendRes = await fetch(`${backendUrl}/reports`, {
+      // Forward multipart/form-data directly to Python backend suspect-reports endpoint
+      const backendRes = await fetch(`${backendUrl}/suspect-reports/`, {
         method: "POST",
         body: rawFormData,
         cache: "no-store",
