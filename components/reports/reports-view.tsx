@@ -35,6 +35,7 @@ import SecurityIcon from "@mui/icons-material/Security";
 import { SuspectReport } from "@/types/report";
 import { reportService } from "@/services/report-service";
 import { ReportDetailsDialog } from "./report-details-dialog";
+import { PoliceStationSelect } from "@/components/ui/police-station-select";
 
 // Official drug activity types matching the exact database records
 const ACTIVITY_TYPES = [
@@ -290,6 +291,9 @@ export function ReportsView() {
           flexDirection: { xs: "column", md: "row" },
           gap: 2,
           alignItems: { xs: "stretch", md: "center" },
+          position: "relative",
+          zIndex: 10,
+          overflow: "visible",
         }}
       >
         {/* Search input */}
@@ -339,18 +343,20 @@ export function ReportsView() {
           ))}
         </TextField>
 
-        {/* Police Station Filter */}
-        <TextField
-          size="small"
-          label="Filter Police Station"
-          placeholder="e.g. Colombo Central"
-          value={policeStationFilter}
-          onChange={(e) => {
-            setPoliceStationFilter(e.target.value);
-            setPage(0);
-          }}
-          sx={{ minWidth: 180, flex: 1 }}
-        />
+        {/* Police Station Filter - Searchable Dropdown */}
+        <Box sx={{ minWidth: 220, flex: 1, position: "relative", zIndex: 30 }}>
+          <PoliceStationSelect
+            value={policeStationFilter}
+            onChange={(val) => {
+              setPoliceStationFilter(val);
+              setPage(0);
+            }}
+            showAllOption={true}
+            allOptionLabel="All Police Stations"
+            placeholder="Filter Police Station"
+            className="!h-10 text-xs sm:text-sm"
+          />
+        </Box>
 
         {/* Clear Filters Button */}
         {hasActiveFilters && (

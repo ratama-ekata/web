@@ -16,6 +16,8 @@ export interface PoliceStationSelectProps {
   error?: string;
   className?: string;
   required?: boolean;
+  showAllOption?: boolean;
+  allOptionLabel?: string;
 }
 
 export function PoliceStationSelect({
@@ -29,6 +31,8 @@ export function PoliceStationSelect({
   error,
   className,
   required = false,
+  showAllOption = false,
+  allOptionLabel = "All Police Stations",
 }: PoliceStationSelectProps) {
   const generatedId = useId();
   const inputId = id || generatedId;
@@ -294,6 +298,25 @@ export function PoliceStationSelect({
             aria-label="Police stations list"
             className="max-h-64 overflow-y-auto py-1 scrollbar-thin scrollbar-thumb-zinc-300 dark:scrollbar-thumb-zinc-700"
           >
+            {showAllOption && !searchQuery && (
+              <li
+                role="option"
+                aria-selected={!value}
+                onClick={() => handleSelect({ station_id: 0, station_name: "" })}
+                className={cn(
+                  "flex items-center justify-between px-3.5 py-2.5 text-xs sm:text-sm cursor-pointer transition-colors border-b border-zinc-100 dark:border-zinc-800",
+                  !value
+                    ? "bg-[#882637]/10 font-bold text-[#882637] dark:bg-[#882637]/20 dark:text-[#F29EAA]"
+                    : "hover:bg-zinc-100 dark:hover:bg-zinc-800/70"
+                )}
+              >
+                <div className="flex items-center gap-2 truncate">
+                  <Shield className="h-3.5 w-3.5 text-zinc-400" />
+                  <span className="truncate">{allOptionLabel}</span>
+                </div>
+                {!value && <Check className="h-4 w-4 text-[#882637] dark:text-[#F29EAA] shrink-0" />}
+              </li>
+            )}
             {filteredStations.length === 0 ? (
               <li className="px-4 py-6 text-center text-xs text-zinc-500 dark:text-zinc-400">
                 No police stations match &ldquo;{searchQuery}&rdquo;.
