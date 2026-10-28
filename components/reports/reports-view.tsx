@@ -116,6 +116,7 @@ export function ReportsView() {
         item.police_station?.toLowerCase().includes(query) ||
         item.type_of_activity?.toLowerCase().includes(query) ||
         item.activity_description?.toLowerCase().includes(query) ||
+        item.report_id?.toLowerCase().includes(query) ||
         item.id?.toLowerCase().includes(query)
       );
     });
@@ -294,7 +295,7 @@ export function ReportsView() {
         {/* Search input */}
         <TextField
           size="small"
-          placeholder="Search by citizen name, NIC, phone, station, or keywords..."
+          placeholder="Search by report ID, citizen name, NIC, phone, station, or keywords..."
           value={searchTerm}
           onChange={(e) => {
             setSearchTerm(e.target.value);
@@ -439,8 +440,14 @@ export function ReportsView() {
                 >
                   {/* ID Column */}
                   <TableCell sx={{ fontFamily: "monospace", fontSize: "0.8rem", color: "text.secondary" }}>
-                    <Tooltip title={report.id}>
-                      <span>#{report.id ? report.id.substring(0, 8) : "N/A"}</span>
+                    <Tooltip title={report.report_id || report.id}>
+                      <span>
+                        {report.report_id
+                          ? report.report_id
+                          : report.id
+                            ? `#${report.id.substring(0, 8)}`
+                            : "N/A"}
+                      </span>
                     </Tooltip>
                   </TableCell>
 

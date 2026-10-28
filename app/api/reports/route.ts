@@ -159,45 +159,57 @@ export async function POST(request: Request) {
       );
     }
 
-    // Generate unique official Report ID: RE-{YEAR}-{6_ALPHANUMERIC} (e.g. RE-2026-A9019B)
-    const reportId = generateReportId();
-    const referenceNumber = reportId;
+    // Forward the validated report to the Python backend so it is persisted in PostgreSQL
+    // (and therefore visible in the admin portal).
+    const backendUrl = (
+      process.env.API_BASE_URL ||
+      process.env.PYTHON_API_URL ||
+      (process.env.NODE_ENV === "development"
+        ? "http://127.0.0.1:8000"
+        : "https://api-delta-one-54.vercel.app")
+    ).replace(/\/$/, "");
 
-    // Sanitized record ready for database storage / notification dispatch
-    const newReport = {
-      reportId,
-      report_id: reportId,
-      referenceNumber,
-      fullName: sanitizeString(fullName.trim()),
-      phone: phone.trim(),
-      nic: nic ? sanitizeString(nic.trim().toUpperCase()) : null,
-      email: email ? sanitizeString(email.trim().toLowerCase()) : null,
-      address: address ? sanitizeString(address.trim()) : null,
-      policeStation: sanitizeString(resolvedPoliceStation.trim()),
-      activityType: normalizedActivity,
-      description: sanitizeString(description.trim()),
-      attachmentsCount: Array.isArray(attachments) ? attachments.length : 0,
-      status: "received",
-      createdAt: new Date().toISOString(),
-    };
-
-    console.info(`[Report Received] Report ID: ${reportId}`, {
-      activityType: newReport.activityType,
-      policeStation: newReport.policeStation,
-      phone: newReport.phone,
-      email: newReport.email,
-      attachmentsCount: newReport.attachmentsCount,
+    const backendRes = await fetch(`${backendUrl}/reports`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      body: JSON.stringify(body),
+      cache: "no-store",
     });
+
+    const backendData = await backendRes.json().catch(() => null);
+
+    if (!backendRes.ok) {
+      const detail =
+        backendData && typeof backendData.detail === "string"
+          ? backendData.detail
+          : "Failed to save report. Please try again later.";
+      return NextResponse.json(
+        {
+          success: false,
+          error: {
+            code: "BACKEND_ERROR",
+            message: detail,
+            statusCode: backendRes.status,
+          },
+          timestamp: new Date().toISOString(),
+        },
+        { status: backendRes.status }
+      );
+    }
+
+    const reportId: string =
+      backendData?.report_id || backendData?.referenceNumber || generateReportId();
 
     return NextResponse.json(
       {
         success: true,
         data: {
+          ...backendData,
           reportId,
           report_id: reportId,
-          referenceNumber,
+          referenceNumber: backendData?.referenceNumber || reportId,
           status: "received",
-          submittedAt: newReport.createdAt,
+          submittedAt: new Date().toISOString(),
         },
         message: "Your report has been successfully submitted.",
         timestamp: new Date().toISOString(),

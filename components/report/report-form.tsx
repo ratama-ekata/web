@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { ArrowDownRight } from "lucide-react";
+import { ArrowDownRight, Loader2 } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -211,11 +211,10 @@ export function ReportForm() {
     }
   };
 
-  const handleBlur = (field: keyof FormState) => {
-    const err = validateField(field, values[field]);
-    if (err) {
-      setErrors((prev) => ({ ...prev, [field]: err }));
-    }
+  const handleBlur = (field: keyof FormState, currentValue?: string) => {
+    const err = validateField(field, currentValue ?? values[field]);
+    // Set the error if invalid, and clear any stale error once the value is valid
+    setErrors((prev) => ({ ...prev, [field]: err }));
   };
 
   const validateAll = (): FormErrors => {
@@ -555,7 +554,7 @@ export function ReportForm() {
               value={values.activityType}
               error={errors.activityType}
               onChange={(e) => setField("activityType", e.target.value)}
-              onBlur={() => handleBlur("activityType")}
+              onBlur={(e) => handleBlur("activityType", e.target.value)}
             />
           </FormField>
           <FormField
@@ -654,8 +653,17 @@ export function ReportForm() {
                 disabled={isSubmitting}
                 className="inline-flex items-center justify-center gap-2 rounded-xl border-2 border-[#882637] bg-[#882637] hover:bg-[#701622] active:bg-[#511B25] text-white font-black text-sm px-7 py-2.5 shadow-[4px_4px_0px_0px_#000000] hover:shadow-[5px_5px_0px_0px_#000000] hover:-translate-y-0.5 active:translate-x-0.5 active:translate-y-0.5 cursor-pointer transition-all disabled:opacity-50"
               >
-                <span>{isSubmitting ? "..." : t("readyToSubmit.submit")}</span>
-                <ArrowDownRight className="h-4 w-4 stroke-[2.5]" />
+                {isSubmitting ? (
+                  <>
+                    <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />
+                    <span>{t("readyToSubmit.submit")}</span>
+                  </>
+                ) : (
+                  <>
+                    <span>{t("readyToSubmit.submit")}</span>
+                    <ArrowDownRight className="h-4 w-4 stroke-[2.5]" />
+                  </>
+                )}
               </button>
             </div>
           </div>
