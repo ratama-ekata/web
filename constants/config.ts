@@ -10,9 +10,7 @@ export const APP_CONFIG = {
   
   // API defaults
   api: {
-    baseUrl:
-      process.env.NEXT_PUBLIC_API_BASE_URL ||
-      (process.env.NODE_ENV === "production" ? "/api" : "http://localhost:8000"),
+    baseUrl: "/api",
     timeoutMs: 15000,
     maxRetries: 2,
   },
