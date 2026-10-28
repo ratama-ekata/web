@@ -53,6 +53,148 @@ function generateReportId(year?: number): string {
 
 export async function POST(request: Request) {
   try {
+    const contentType = request.headers.get("content-type") || "";
+    const isMultipart = contentType.includes("multipart/form-data");
+
+    const backendUrl = (
+      process.env.API_BASE_URL ||
+      process.env.PYTHON_API_URL ||
+      (process.env.NODE_ENV === "development"
+        ? "http://127.0.0.1:8000"
+        : "https://api-delta-one-54.vercel.app")
+    ).replace(/\/$/, "");
+
+    if (isMultipart) {
+      let rawFormData: FormData;
+      try {
+        rawFormData = await request.formData();
+      } catch {
+        return NextResponse.json(
+          {
+            success: false,
+            error: {
+              code: "INVALID_FORM_DATA",
+              message: "Request must be a valid multipart form-data payload.",
+              statusCode: 400,
+            },
+            timestamp: new Date().toISOString(),
+          },
+          { status: 400 }
+        );
+      }
+
+      const fullName = String(rawFormData.get("fullname") || rawFormData.get("fullName") || "").trim();
+      const phone = String(rawFormData.get("mobile") || rawFormData.get("phone") || "").trim();
+      const nic = String(rawFormData.get("nic") || "").trim();
+      const email = String(rawFormData.get("email") || "").trim();
+      const resolvedPoliceStation = String(
+        rawFormData.get("police_station") || rawFormData.get("policeStation") || ""
+      ).trim();
+      const activityType = String(
+        rawFormData.get("type_of_activity") || rawFormData.get("activityType") || ""
+      ).trim();
+      const description = String(
+        rawFormData.get("activity_description") || rawFormData.get("description") || ""
+      ).trim();
+
+      const uploadedFiles = rawFormData.getAll("files");
+
+      const validationErrors: Record<string, string> = {};
+
+      if (!fullName || fullName.length < 2) {
+        validationErrors.fullName = "Please enter your full name.";
+      }
+      if (!phone || phone.length < 6) {
+        validationErrors.phone = "Please enter a valid phone number.";
+      }
+      if (!resolvedPoliceStation || resolvedPoliceStation.length < 2) {
+        validationErrors.policeStation = "Please select a valid police station.";
+      }
+      if (nic && !isValidSriLankanNIC(nic)) {
+        validationErrors.nic = "Please enter a valid Sri Lankan NIC number.";
+      }
+      if (email && !isValidEmail(email)) {
+        validationErrors.email = "Please enter a valid email address.";
+      }
+      const normalizedActivity =
+        OFFICIAL_DRUG_ACTIVITIES[activityType.toLowerCase()] || activityType;
+      if (!activityType || (!VALID_ACTIVITY_TYPES.has(activityType) && !VALID_ACTIVITY_TYPES.has(normalizedActivity))) {
+        validationErrors.activityType = "Please select a valid type of activity.";
+      }
+      if (!description || description.length < 10) {
+        validationErrors.description = "Please describe the activity with at least 10 characters.";
+      } else if (description.length > 2000) {
+        validationErrors.description = "Description cannot exceed 2000 characters.";
+      }
+      if (uploadedFiles.length > 3) {
+        validationErrors.attachments = "You can attach up to 3 files.";
+      }
+
+      if (Object.keys(validationErrors).length > 0) {
+        return NextResponse.json(
+          {
+            success: false,
+            error: {
+              code: "VALIDATION_FAILED",
+              message: "One or more fields failed validation.",
+              details: validationErrors,
+              statusCode: 400,
+            },
+            timestamp: new Date().toISOString(),
+          },
+          { status: 400 }
+        );
+      }
+
+      // Forward multipart/form-data directly to Python backend
+      const backendRes = await fetch(`${backendUrl}/reports`, {
+        method: "POST",
+        body: rawFormData,
+        cache: "no-store",
+      });
+
+      const backendData = await backendRes.json().catch(() => null);
+
+      if (!backendRes.ok) {
+        const detail =
+          backendData && typeof backendData.detail === "string"
+            ? backendData.detail
+            : "Failed to save report. Please try again later.";
+        return NextResponse.json(
+          {
+            success: false,
+            error: {
+              code: "BACKEND_ERROR",
+              message: detail,
+              statusCode: backendRes.status,
+            },
+            timestamp: new Date().toISOString(),
+          },
+          { status: backendRes.status }
+        );
+      }
+
+      const reportId: string =
+        backendData?.report_id || backendData?.referenceNumber || generateReportId();
+
+      return NextResponse.json(
+        {
+          success: true,
+          data: {
+            ...backendData,
+            reportId,
+            report_id: reportId,
+            referenceNumber: backendData?.referenceNumber || reportId,
+            status: "received",
+            submittedAt: new Date().toISOString(),
+          },
+          message: "Your report has been successfully submitted.",
+          timestamp: new Date().toISOString(),
+        },
+        { status: 201 }
+      );
+    }
+
     const body = await request.json().catch(() => null);
 
     if (!body || typeof body !== "object") {
@@ -160,14 +302,6 @@ export async function POST(request: Request) {
 
     // Forward the validated report to the Python backend so it is persisted in PostgreSQL
     // (and therefore visible in the admin portal).
-    const backendUrl = (
-      process.env.API_BASE_URL ||
-      process.env.PYTHON_API_URL ||
-      (process.env.NODE_ENV === "development"
-        ? "http://127.0.0.1:8000"
-        : "https://api-delta-one-54.vercel.app")
-    ).replace(/\/$/, "");
-
     const backendRes = await fetch(`${backendUrl}/reports`, {
       method: "POST",
       headers: { "Content-Type": "application/json", Accept: "application/json" },

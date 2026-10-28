@@ -266,56 +266,125 @@ export function ReportForm() {
         OFFICIAL_ACTIVITY_MAPPINGS[values.activityType.trim().toLowerCase()] ||
         values.activityType.trim();
 
-      const payload = {
-        ...values,
-        activityType: fullActivityType,
-        policeStation: values.policeStation,
-        police_station: values.policeStation,
-        phone: formattedPhone,
-        mobile: formattedPhone,
-        fullname: values.fullName,
-        type_of_activity: fullActivityType,
-        activity_description: values.description,
-        attachments: files.map((f) => ({ name: f.name, size: f.size, type: f.type })),
-      };
-
       let refNum = "";
-      try {
-        const res = await apiClient.post<{
-          referenceNumber?: string;
-          report_id?: string;
-          reportId?: string;
-          id?: string;
-        }>("/reports", payload);
-        if (res?.data?.report_id) {
-          refNum = res.data.report_id;
-        } else if (res?.data?.reportId) {
-          refNum = res.data.reportId;
-        } else if (res?.data?.referenceNumber) {
-          refNum = res.data.referenceNumber;
-        } else if (res?.data?.id) {
-          refNum = `RE-${new Date().getFullYear()}-${String(res.data.id).replace(/-/g, "").slice(0, 6).toUpperCase()}`;
+
+      if (files.length > 0) {
+        // Send multipart form-data with binary file blobs directly to server
+        const formData = new FormData();
+        formData.append("fullname", values.fullName.trim());
+        formData.append("fullName", values.fullName.trim());
+        formData.append("mobile", formattedPhone);
+        formData.append("phone", formattedPhone);
+        formData.append("police_station", values.policeStation.trim());
+        formData.append("policeStation", values.policeStation.trim());
+        formData.append("type_of_activity", fullActivityType);
+        formData.append("activityType", fullActivityType);
+        formData.append("activity_description", values.description.trim());
+        formData.append("description", values.description.trim());
+
+        if (values.email.trim()) {
+          formData.append("email", values.email.trim());
         }
-      } catch (err: unknown) {
-        // Fallback to /suspect-reports/json if /reports wasn't reachable
+        if (values.nic.trim()) {
+          formData.append("nic", values.nic.trim().toUpperCase());
+        }
+        if (values.address.trim()) {
+          formData.append("address", values.address.trim());
+        }
+
+        files.forEach((file) => {
+          formData.append("files", file, file.name);
+        });
+
         try {
-          const fallbackRes = await apiClient.post<{
+          const res = await apiClient.post<{
             referenceNumber?: string;
             report_id?: string;
             reportId?: string;
             id?: string;
-          }>("/suspect-reports/json", payload);
-          if (fallbackRes?.data?.report_id) {
-            refNum = fallbackRes.data.report_id;
-          } else if (fallbackRes?.data?.reportId) {
-            refNum = fallbackRes.data.reportId;
-          } else if (fallbackRes?.data?.referenceNumber) {
-            refNum = fallbackRes.data.referenceNumber;
-          } else if (fallbackRes?.data?.id) {
-            refNum = `RE-${new Date().getFullYear()}-${String(fallbackRes.data.id).replace(/-/g, "").slice(0, 6).toUpperCase()}`;
+          }>("/reports", formData);
+          if (res?.data?.report_id) {
+            refNum = res.data.report_id;
+          } else if (res?.data?.reportId) {
+            refNum = res.data.reportId;
+          } else if (res?.data?.referenceNumber) {
+            refNum = res.data.referenceNumber;
+          } else if (res?.data?.id) {
+            refNum = `RE-${new Date().getFullYear()}-${String(res.data.id).replace(/-/g, "").slice(0, 6).toUpperCase()}`;
           }
-        } catch {
-          throw err;
+        } catch (err: unknown) {
+          // Fallback to direct /suspect-reports/
+          try {
+            const fallbackRes = await apiClient.post<{
+              referenceNumber?: string;
+              report_id?: string;
+              reportId?: string;
+              id?: string;
+            }>("/suspect-reports/", formData);
+            if (fallbackRes?.data?.report_id) {
+              refNum = fallbackRes.data.report_id;
+            } else if (fallbackRes?.data?.reportId) {
+              refNum = fallbackRes.data.reportId;
+            } else if (fallbackRes?.data?.referenceNumber) {
+              refNum = fallbackRes.data.referenceNumber;
+            } else if (fallbackRes?.data?.id) {
+              refNum = `RE-${new Date().getFullYear()}-${String(fallbackRes.data.id).replace(/-/g, "").slice(0, 6).toUpperCase()}`;
+            }
+          } catch {
+            throw err;
+          }
+        }
+      } else {
+        const payload = {
+          ...values,
+          activityType: fullActivityType,
+          policeStation: values.policeStation,
+          police_station: values.policeStation,
+          phone: formattedPhone,
+          mobile: formattedPhone,
+          fullname: values.fullName,
+          type_of_activity: fullActivityType,
+          activity_description: values.description,
+          attachments: [],
+        };
+
+        try {
+          const res = await apiClient.post<{
+            referenceNumber?: string;
+            report_id?: string;
+            reportId?: string;
+            id?: string;
+          }>("/reports", payload);
+          if (res?.data?.report_id) {
+            refNum = res.data.report_id;
+          } else if (res?.data?.reportId) {
+            refNum = res.data.reportId;
+          } else if (res?.data?.referenceNumber) {
+            refNum = res.data.referenceNumber;
+          } else if (res?.data?.id) {
+            refNum = `RE-${new Date().getFullYear()}-${String(res.data.id).replace(/-/g, "").slice(0, 6).toUpperCase()}`;
+          }
+        } catch (err: unknown) {
+          // Fallback to /suspect-reports/json if /reports wasn't reachable
+          try {
+            const fallbackRes = await apiClient.post<{
+              referenceNumber?: string;
+              report_id?: string;
+              reportId?: string;
+              id?: string;
+            }>("/suspect-reports/json", payload);
+            if (fallbackRes?.data?.report_id) {
+              refNum = fallbackRes.data.report_id;
+            } else if (fallbackRes?.data?.reportId) {
+              refNum = fallbackRes.data.reportId;
+            } else if (fallbackRes?.data?.referenceNumber) {
+              refNum = fallbackRes.data.referenceNumber;
+            } else if (fallbackRes?.data?.id) {
+              refNum = `RE-${new Date().getFullYear()}-${String(fallbackRes.data.id).replace(/-/g, "").slice(0, 6).toUpperCase()}`;
+            }
+          } catch {
+            throw err;
+          }
         }
       }
 

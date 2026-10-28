@@ -77,8 +77,10 @@ class ApiClient {
 
     const authToken = token ?? this.getAuthToken();
 
+    const isFormData = typeof FormData !== "undefined" && customConfig.body instanceof FormData;
+
     const requestHeaders: Record<string, string> = {
-      "Content-Type": "application/json",
+      ...(isFormData ? {} : { "Content-Type": "application/json" }),
       Accept: "application/json",
       ...(authToken ? { Authorization: `Bearer ${authToken}` } : {}),
       ...(headers as Record<string, string>),
@@ -173,10 +175,11 @@ class ApiClient {
     body?: unknown,
     options?: RequestOptions
   ): Promise<ApiResponse<T>> {
+    const isFormData = typeof FormData !== "undefined" && body instanceof FormData;
     return this.request<T>(endpoint, {
       ...options,
       method: "POST",
-      body: body ? JSON.stringify(body) : undefined,
+      body: isFormData ? (body as BodyInit) : (body ? JSON.stringify(body) : undefined),
     });
   }
 
@@ -185,10 +188,11 @@ class ApiClient {
     body?: unknown,
     options?: RequestOptions
   ): Promise<ApiResponse<T>> {
+    const isFormData = typeof FormData !== "undefined" && body instanceof FormData;
     return this.request<T>(endpoint, {
       ...options,
       method: "PUT",
-      body: body ? JSON.stringify(body) : undefined,
+      body: isFormData ? (body as BodyInit) : (body ? JSON.stringify(body) : undefined),
     });
   }
 
@@ -197,10 +201,11 @@ class ApiClient {
     body?: unknown,
     options?: RequestOptions
   ): Promise<ApiResponse<T>> {
+    const isFormData = typeof FormData !== "undefined" && body instanceof FormData;
     return this.request<T>(endpoint, {
       ...options,
       method: "PATCH",
-      body: body ? JSON.stringify(body) : undefined,
+      body: isFormData ? (body as BodyInit) : (body ? JSON.stringify(body) : undefined),
     });
   }
 
