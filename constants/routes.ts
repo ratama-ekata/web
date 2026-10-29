@@ -15,10 +15,6 @@ export const ROUTES = {
   REHABILITATION: "/rehabilitation",
   HOTLINES: "/#hotlines",
 
-  // Authentication & Dashboard
-  LOGIN: "/login",
-  REPORTS: "/reports",
-
   // Internal API routes
   API: {
     HEALTH: "/api/health",

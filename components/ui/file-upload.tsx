@@ -51,7 +51,7 @@ export function FileUpload({
   onChange,
   maxFiles = 3,
   maxSizeMb = 10,
-  accept = ".png,.jpg,.jpeg,.pdf,.docx,image/png,image/jpeg,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+  accept = ".png,.jpg,.jpeg,.heic,.heif,.webp,.pdf,.docx,image/*,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document",
   labels,
 }: FileUploadProps) {
   const inputRef = useRef<HTMLInputElement>(null);

@@ -26,8 +26,6 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       { source: "/", destination: "/en/", permanent: false },
-      { source: "/login", destination: "/en/login/", permanent: false },
-      { source: "/reports", destination: "/en/reports/", permanent: false },
     ];
   },
   // Reverse proxy /api/* to the Python backend automatically.
